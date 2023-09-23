@@ -1,5 +1,5 @@
 import unittest
-import robot_movement
+from Robot import robot_movement
 
 
 class Test_Robot_Movement(unittest.TestCase):

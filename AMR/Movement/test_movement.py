@@ -1,7 +1,7 @@
 import unittest
 import movement
 import coordinates
-import robot_movement
+from Robot import robot_movement
 
 
 class Test_Movement(unittest.TestCase):

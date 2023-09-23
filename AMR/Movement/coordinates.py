@@ -1,7 +1,6 @@
 import numpy
 from datetime import datetime
-import robot_movement
-
+from Robot import robot_movement
 
 __x_pos: float = 0
 __y_pos: float = 0

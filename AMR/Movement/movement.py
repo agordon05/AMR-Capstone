@@ -1,7 +1,7 @@
 import time
 import numpy
 import coordinates
-import robot_movement
+from Robot import robot_movement
 
 __destination = {
     'x': 0,
