@@ -1,25 +1,37 @@
 
 
 # global direction variables
-_moving_forward = False
-_moving_backward = False
-_rotating_left = False
-_rotating_right = False
+__moving_forward = False
+__moving_backward = False
+__rotating_left = False
+__rotating_right = False
 
 # a dictionary to map directions to boolean flags
-direction_flags = {
-    "forward": _moving_forward,
-    "backward": _moving_backward,
-    "rotating left": _rotating_left,
-    "rotating right": _rotating_right
+__direction_flags = {
+    "forward": __moving_forward,
+    "backward": __moving_backward,
+    "rotating left": __rotating_left,
+    "rotating right": __rotating_right
 }
+
+
+def get_direction_flags():
+    global __direction_flags
+    flags = {
+        "forward": __direction_flags['forward'],
+        "backward": __direction_flags['backward'],
+        "rotating left": __direction_flags['rotating left'],
+        "rotating right": __direction_flags['rotating right']
+    }
+    return flags
 
 
 # Change the global direction variables based on the provided direction string
 def _change_direction(direction: str):
+    global __direction_flags
     # Reset all direction flags to False
-    for flag in direction_flags:
-        direction_flags[flag] = False
+    for flag in __direction_flags:
+        __direction_flags[flag] = False
 
     # for key_value in direction_flags:
     #     print(key_value)
@@ -35,8 +47,8 @@ def _change_direction(direction: str):
         return
 
     # Set the corresponding direction flag to True
-    if direction in direction_flags:
-        direction_flags[direction] = True
+    if direction in __direction_flags:
+        __direction_flags[direction] = True
 
 
 # Define functions for each direction
