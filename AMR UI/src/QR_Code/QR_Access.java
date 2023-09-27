@@ -15,6 +15,11 @@ public class QR_Access {
 		
 	}
 	
+	public static void addQR(QR_Object qr) {
+		if(qr == null) return;
+		QR_Codes.add(qr);
+	}
+	
 	public static ArrayList<QR_Object> getQRs() {
 		ArrayList<QR_Object> list = new ArrayList<QR_Object>();
 		for(int index = 0; index < QR_Codes.size(); index++) {
@@ -59,10 +64,11 @@ public class QR_Access {
 			
 			int x_pos = QR_Codes.get(index).getX_pos();
 			int y_pos = QR_Codes.get(index).getY_pos();
-
+			
+			if(x_pos == x && y_pos == y) continue;
 			
 			// If x and y coordinates of QR are 1 away, add to list
-			if(Math.abs(x_pos - x) == 1 && Math.abs(y_pos - y) == 1) {
+			if(Math.abs(x_pos - x) <= 1 && Math.abs(y_pos - y) <= 1) {
 				list.add(QR_Codes.get(index));
 			}
 		}

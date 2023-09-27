@@ -6,13 +6,17 @@ public class QR_Queue {
 	
 	private static QR_Object prevQR = null;
 	private static ArrayList<QR_Object> queue;
-	private static int sizeOfQueue = 5;
+	protected static final int sizeOfQueue = 5;
 	
 	// initializes the array list and loads 5 queues into the queue list
 	public static void initialize() {
 		queue = new ArrayList<QR_Object>(sizeOfQueue);
-		addToQueue();
 	}
+	
+	protected static ArrayList<QR_Object> getQueue() {
+		return queue;
+	}
+	
 	
 	// adds a qr code to the queue
 	public static void addQR(QR_Object qr) {
@@ -48,18 +52,17 @@ public class QR_Queue {
 			QR_Object qr = queue.get(0);
 			queue.remove(0);
 			prevQR = qr;
-			addToQueue();
 		}
 	}
 	
 	// fills the queue
-	private static void addToQueue() {
+	protected static void addToQueue() {
 		while(queue.size() < sizeOfQueue && queue.size() > 0) {
 			
 			// gets the qr code last in the queue and gets its x and y position
 			int lastXPos = queue.get(queue.size() - 1).getX_pos();
 			int lastYPos = queue.get(queue.size() - 1).getY_pos();
-			
+			System.out.println(QR_Access.getQrByPosition(lastXPos, lastYPos).getName());
 			// gets the surrounding qr codes of the last qr code
 			ArrayList<QR_Object> nearbyQR = QR_Access.getNearbyQR(lastXPos, lastYPos);
 			
@@ -74,18 +77,27 @@ public class QR_Queue {
 				
 				// loop continuously
 				while(true) {
-					
+					System.out.println("nearby size: " + nearbyQR.size());
 					// pick an index at random
 					index = (int) (Math.random() * nearbyQR.size());
-					
+					System.out.println("index: " + index);
+					System.out.println("Queue size: " + queue.size());
 					//if queue has 2 or more qr codes, check if the last qr code has come from the one chosen form index
 					if(queue.size() >= 2) {
-						if( queue.get(queue.size() - 2) == nearbyQR.get(index)) 
+						System.out.println("second to last queue: " + queue.get(queue.size() - 2).getName());
+						if( queue.get(queue.size() - 2) != nearbyQR.get(index)) {
+							System.out.println("breaking from loop");
 							// break from loop
 							break; 
+						}
+							
+							
 					}
 					//only one qr code, no need to check if the last qr code has come from the one chosen form index
-					else break;
+					else {
+						System.out.println("queue size is less than 2");
+						break;
+					}
 
 				}
 			}
