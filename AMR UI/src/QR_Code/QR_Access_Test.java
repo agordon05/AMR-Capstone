@@ -77,5 +77,13 @@ class QR_Access_Test {
 
 		
 	}
+	
+	@Test
+	void test2() {
+		QR_Access.initialize();
+		assertTrue(0 == QR_Access.getQRs().size());
+		QR_Access.loadQRCodes();
+		assertTrue(60 == QR_Access.getQRs().size(), "size of qr list was actually " + QR_Access.getQRs().size());
+	}
 
 }

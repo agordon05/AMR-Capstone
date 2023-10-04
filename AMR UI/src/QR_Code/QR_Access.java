@@ -1,10 +1,15 @@
 package QR_Code;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class QR_Access {
 	
 	private static ArrayList<QR_Object> QR_Codes;
+	private final static String fileName = "/QR_Data.txt";
 	
 	public static void initialize() {
 		QR_Codes = new ArrayList<QR_Object>();
@@ -12,7 +17,48 @@ public class QR_Access {
 	
 	
 	public static void loadQRCodes() {
-		
+		try {
+			// directory to current file, /../../ returns two directories which is where file is located
+			String filePath = new File("").getAbsolutePath() + fileName;
+			// Create a FileReader and bufferedReader to read the file
+			FileReader fileReader = new FileReader(filePath);
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+			String line;
+			int count = 0;
+
+			// Reads each line in data file
+			while ((line = bufferedReader.readLine()) != null) {
+				// Prints line for testing
+				System.out.println(line);
+				
+				// Splits data into tokens
+				String[] qrData = line.split("#");
+				
+				// Ensures correct number of tokens
+				if(qrData.length != 5) throw new Exception("data is corrupted");
+				
+				// Initializes data to objects
+				String fileName = qrData[0];
+				String qrCode = qrData[1];
+				int x_pos = Integer.parseInt(qrData[2]);
+				int y_pos = Integer.parseInt(qrData[3]);
+				String status = qrData[4];
+				
+				// Creates and adds qr object to access list
+				QR_Object temp = new QR_Object(fileName, qrCode, x_pos, y_pos, status);
+				addQR(temp);
+				count++;
+				System.out.println(count);
+				
+			}
+
+			// Close BufferedReader
+			bufferedReader.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+
 	}
 	
 	public static void addQR(QR_Object qr) {
