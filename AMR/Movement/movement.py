@@ -1,11 +1,11 @@
 import time
 import numpy
 from Movement import coordinates
-from Robot import robot_movement
+from Robot_command import robot_movement
 
 __destination = {
     'x': 0,
-    'y': 0,
+    'y': 1,
 }
 # _source = {
 #     'x': 0,
@@ -13,12 +13,12 @@ __destination = {
 # }
 __signal = None  # Allows outside component to control the movement
 
-__position_percentage_error = 0.05  # percentage error allowed for how close robot can be to destination or source to not
+__position_percentage_error = 0.1  # percentage error allowed for how close robot can be to destination or source to not
 # move
 # how far away robot can be from destination -- A value of 0.05 means the robot has to be within 0.05 "meters" assuming
 # that a distance of 1 is 1 "meter"
 
-__rotation_percentage_error = 0.05  # percentage error allowed for how close the robot direction towards it's destination
+__rotation_percentage_error = 10  # percentage error allowed for how close the robot direction towards it's destination
 # can be
 # 0.05 corresponds to an accuracy of give or take 5 degrees.  if the degree needed is 100, rotation can be between 95
 # and 105
@@ -96,6 +96,9 @@ def move():
     if control is None:
         control = "forward"
         print("moving forward")
+
+    # update coordinates
+    coordinates.update()
 
     # change movement
     if is_move_change(control) is True:

@@ -1,13 +1,13 @@
 import numpy
 from datetime import datetime
-from Robot import robot_movement
+from Robot_command import robot_movement
 
 __x_pos: float = 0
 __y_pos: float = 0
-__direction_in_degrees = 90  # direction is in degrees for easy understanding
-__movement_scale = 1  # scale of movement assuming constant speed
-__rotation_scale = 1  # scale of rotation assuming constant speed
-
+__direction_in_degrees = 0  # direction is in degrees for easy understanding
+__movement_scale = 0.24  # scale of movement assuming constant speed
+__rotation_scale = 0.12  # scale of rotation assuming constant speed
+__wheel_bias = 0.00001  # when moving straight, how far is the robot drifting, positive number means robot is drifting to the right, negaative to the left
 # when starting up, time of last update will be start time of program in milliseconds
 __time_of_last_update_ms = 0  # is in milliseconds for precision
 __time_converter_ms_s = 1 / 1000  # to be multiplied to time to convert milliseconds to seconds
@@ -50,12 +50,13 @@ def _set_time_of_last_update(time):
 
 # time needed to see how much to update coordinates by
 def update():
-
+    global __x_pos, __y_pos, __direction_in_degrees
     # calculates time since last update method called
     time = time_since_lest_update()
     flags = robot_movement.get_direction_flags()
     if flags['forward'] is True:
         move_forward(time)
+        __wheel_bias_update(time)  
 
     elif flags['backward'] is True:
         move_backward(time)
@@ -65,6 +66,14 @@ def update():
 
     elif flags['rotating right'] is True:
         rotate_right(time)
+    print(f'x pos: {__x_pos} -- y pos: {__y_pos} -- degrees: {__direction_in_degrees}')
+
+def __wheel_bias_update(time: float):
+    global __direction_in_degrees, __wheel_bias
+    
+    __direction_in_degrees -= time * __wheel_bias
+
+
 
 
 # calculated in ms for more precision
