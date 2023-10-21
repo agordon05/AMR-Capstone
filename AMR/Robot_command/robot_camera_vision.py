@@ -1,12 +1,8 @@
 import os
-import pprint
 import sys
 import numpy
 import cv2
-#import pylibdmtx #https://libdmtx.sourceforge.net/
-#from pylibdmtx.pylibdmtx import decode #as dmtxdecode
+import ipywidgets.widgets as widgets
 
-env = os.environ
-#default_camera = env.get()
-print("User's Environment variable:")
-pprint.pprint(dict(env), width = 1)
+image = widgets.Image(format = 'jpeg', width = 300, height = '300')
+display(image)
