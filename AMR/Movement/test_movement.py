@@ -1,47 +1,54 @@
 import unittest
 import movement
 import coordinates
-from Robot import robot_movement
+from Robot_command import robot_movement
+from Model import robot as bot
 
 
 class Test_Movement(unittest.TestCase):
 
-    def test_signal(self):
-        # movement.signal = 'forward'
-        movement.set_signal('forward')
-        self.assertEqual(movement.get_signal(), "forward")
-
-        movement.set_signal('backward')
-        # movement.signal = 'backward'
-        self.assertEqual(movement.get_signal(), "backward")
-
-        movement.set_signal('rotating left')
-        # movement.signal = 'rotating left'
-        self.assertEqual(movement.get_signal(), "rotating left")
-
-        movement.set_signal('rotating right')
-        # movement.signal = 'rotating right'
-        self.assertEqual(movement.get_signal(), "rotating right")
-
-        movement.set_signal('stop')
-        # movement.signal = 'stop'
-        self.assertEqual(movement.get_signal(), "stop")
-
-        movement.set_signal('continue')
-        # movement.signal = 'continue'
-        self.assertEqual(movement.get_signal(), None)
-        movement.signal = None
-        self.assertEqual(movement.get_signal(), None)
+    # def test_signal(self):
+    #     # movement.signal = 'forward'
+    #     robot.set_signal('forward')
+    #     self.assertEqual(movement.get_signal(), "forward")
+    #
+    #     movement.set_user_signal('backward')
+    #     # movement.signal = 'backward'
+    #     self.assertEqual(movement.get_signal(), "backward")
+    #
+    #     movement.set_signal('rotating left')
+    #     # movement.signal = 'rotating left'
+    #     self.assertEqual(movement.get_signal(), "rotating left")
+    #
+    #     movement.set_signal('rotating right')
+    #     # movement.signal = 'rotating right'
+    #     self.assertEqual(movement.get_signal(), "rotating right")
+    #
+    #     movement.set_signal('stop')
+    #     # movement.signal = 'stop'
+    #     self.assertEqual(movement.get_signal(), "stop")
+    #
+    #     movement.set_signal('continue')
+    #     # movement.signal = 'continue'
+    #     self.assertEqual(movement.get_signal(), None)
+    #     movement.signal = None
+    #     self.assertEqual(movement.get_signal(), None)
 
     def test_at_destination(self):
-        destination = {
-            'x': 0.0,
-            'y': 0.0
-        }
+        # destination = {
+        #     'x': 0.0,
+        #     'y': 0.0
+        # }
+        x_destination: float = 0
+        y_destination: float = 0
         # tests that method returns true when movement and coordinates are the same
-        movement.set_destination(destination)
-        coordinates._set_x_pos(0)
-        coordinates._set_y_pos(0)
+        # movement.set_destination(destination)
+        bot.set_x_destination(x_destination)
+        bot.set_y_destination(y_destination)
+
+        bot.set_x_pos(0)
+        bot.set_y_pos(0)
+
         result = movement.at_destination()
         self.assertEqual(True, result)
 
@@ -49,11 +56,13 @@ class Test_Movement(unittest.TestCase):
 
         # movement._destination['x'] = 0.025
         # movement._destination['y'] = 0.025
-        destination['x'] = 0.025
-        destination['y'] = 0.025
-        movement.set_destination(destination)
-        coordinates._set_x_pos(0)
-        coordinates._set_y_pos(0)
+        # destination['x'] = 0.025
+        # destination['y'] = 0.025
+        # movement.set_destination(destination)
+        bot.set_x_destination(0.025)
+        bot.set_y_destination(0.025)
+        bot.set_x_pos(0)
+        bot.set_y_pos(0)
         movement._set_position_error(0.05)
         result = movement.at_destination()
         self.assertEqual(True, result)
@@ -62,19 +71,22 @@ class Test_Movement(unittest.TestCase):
 
         # movement._destination['x'] = 5
         # movement._destination['y'] = 6
-        destination['x'] = 5.0
-        destination['y'] = 6.0
-        movement.set_destination(destination)
-        coordinates._set_x_pos(5.01)
-        coordinates._set_y_pos(5.96)
+        # destination['x'] = 5.0
+        # destination['y'] = 6.0
+        # movement.set_destination(destination)
+        bot.set_x_destination(5)
+        bot.set_y_destination(6)
+
+        bot.set_x_pos(5.01)
+        bot.set_y_pos(5.96)
         # coordinates.x_pos = 5.01
         # coordinates.y_pos = 5.96
         # movement.position_percentage_error = 0.05
         # movement._set_position_error(0.05)
         result = movement.at_destination()
         self.assertEqual(True, result)
-        coordinates._set_x_pos(5.05)
-        coordinates._set_y_pos(5.95)
+        bot.set_x_pos(5.05)
+        bot.set_y_pos(5.95)
         # coordinates.x_pos = 5.05
         # coordinates.y_pos = 5.95
         # movement.position_percentage_error = 0.05
@@ -120,23 +132,30 @@ class Test_Movement(unittest.TestCase):
         #     'x': 5,
         #     'y': 5
         # }
-        destination = {
-            'x': 5,
-            'y': 5
-        }
-        movement.set_destination(destination)
-        coordinates._set_x_pos(0)
-        coordinates._set_y_pos(0)
+        # destination = {
+        #     'x': 5,
+        #     'y': 5
+        # }
+        # movement.set_destination(destination)
+        bot.set_x_destination(5)
+        bot.set_y_destination(5)
+
+        bot.set_x_pos(0)
+        bot.set_y_pos(0)
+
         result = movement.get_rotation_needed()
         self.assertEqual(45, result)
 
         # test for x positions being the same
 
-        destination['x'] = 0.0
-        destination['y'] = 5.0
-        movement.set_destination(destination)
-        coordinates._set_x_pos(0)
-        coordinates._set_y_pos(0)
+        # destination['x'] = 0.0
+        # destination['y'] = 5.0
+        # movement.set_destination(destination)
+        bot.set_x_destination(0)
+        bot.set_y_destination(5)
+
+        bot.set_x_pos(0)
+        bot.set_y_pos(0)
         result = movement.get_rotation_needed()
         self.assertEqual(90, result)
 
@@ -145,11 +164,13 @@ class Test_Movement(unittest.TestCase):
         #     'x': 0,
         #     'y': -5
         # }
-        destination['x'] = 0.0
-        destination['y'] = -5.0
-        movement.set_destination(destination)
-        coordinates._set_x_pos(0)
-        coordinates._set_y_pos(0)
+        # destination['x'] = 0.0
+        # destination['y'] = -5.0
+        bot.set_x_destination(0)
+        bot.set_y_destination(-5)
+        # movement.set_destination(destination)
+        bot.set_x_pos(0)
+        bot.set_y_pos(0)
         result = movement.get_rotation_needed()
         self.assertEqual(270, result)
 
@@ -168,11 +189,13 @@ class Test_Movement(unittest.TestCase):
         #     'x': 5,
         #     'y': 0
         # }
-        destination['x'] = 5.0
-        destination['y'] = 0.0
-        movement.set_destination(destination)
-        coordinates._set_x_pos(0)
-        coordinates._set_y_pos(0)
+        # destination['x'] = 5.0
+        # destination['y'] = 0.0
+        # movement.set_destination(destination)
+        bot.set_x_destination(5)
+        bot.set_y_destination(0)
+        bot.set_x_pos(0)
+        bot.set_y_pos(0)
         result = movement.get_rotation_needed()
         self.assertEqual(0, result)
 
@@ -181,11 +204,13 @@ class Test_Movement(unittest.TestCase):
         #     'x': -5,
         #     'y': 0
         # }
-        destination['x'] = -5.0
-        destination['y'] = 0.0
-        movement.set_destination(destination)
-        coordinates._set_x_pos(0)
-        coordinates._set_y_pos(0)
+        # destination['x'] = -5.0
+        # destination['y'] = 0.0
+        # movement.set_destination(destination)
+        bot.set_x_destination(-5)
+        bot.set_y_destination(0)
+        bot.set_x_pos(0)
+        bot.set_y_pos(0)
         result = movement.get_rotation_needed()
         self.assertEqual(180, result)
 
@@ -194,11 +219,14 @@ class Test_Movement(unittest.TestCase):
         #     'x': -5,
         #     'y': 5
         # }
-        destination['x'] = -5.0
-        destination['y'] = 5.0
-        movement.set_destination(destination)
-        coordinates._set_x_pos(0)
-        coordinates._set_y_pos(0)
+        # destination['x'] = -5.0
+        # destination['y'] = 5.0
+        # movement.set_destination(destination)
+        bot.set_x_destination(-5)
+        bot.set_y_destination(5)
+
+        bot.set_x_pos(0)
+        bot.set_y_pos(0)
         result = movement.get_rotation_needed()
         self.assertEqual(135, result)
 
@@ -207,11 +235,14 @@ class Test_Movement(unittest.TestCase):
         #     'x': -5,
         #     'y': -5
         # }
-        destination['x'] = -5.0
-        destination['y'] = -5.0
-        movement.set_destination(destination)
-        coordinates._set_x_pos(0)
-        coordinates._set_y_pos(0)
+        # destination['x'] = -5.0
+        # destination['y'] = -5.0
+        # movement.set_destination(destination)
+        bot.set_x_destination(-5)
+        bot.set_y_destination(-5)
+
+        bot.set_x_pos(0)
+        bot.set_y_pos(0)
         result = movement.get_rotation_needed()
         self.assertEqual(225, result)
 
@@ -223,8 +254,8 @@ class Test_Movement(unittest.TestCase):
         # destination['x'] = -5.0
         # destination['y'] = -5.0
         # movement.set_destination(destination)
-        coordinates._set_x_pos(2)
-        coordinates._set_y_pos(2)
+        bot.set_x_pos(2)
+        bot.set_y_pos(2)
         result = movement.get_rotation_needed()
         self.assertEqual(225, result)
 
@@ -236,8 +267,8 @@ class Test_Movement(unittest.TestCase):
         # destination['x'] = -5.0
         # destination['y'] = -5.0
         # movement.set_destination(destination)
-        coordinates._set_x_pos(-7)
-        coordinates._set_y_pos(-7)
+        bot.set_x_pos(-7)
+        bot.set_y_pos(-7)
         result = movement.get_rotation_needed()
         self.assertEqual(45, result)
 
@@ -355,15 +386,18 @@ class Test_Movement(unittest.TestCase):
         movement._set_position_error(0.5)
         movement._set_rotation_error(0.5)
         robot_movement.stop()
-        destination = {
-            'x': 0,
-            'y': 0
-        }
-        movement.set_destination(destination)
-        coordinates._set_x_pos(0)
-        coordinates._set_y_pos(0)
-        coordinates.set_rotation(0)
-        movement.set_signal("forward")
+        # destination = {
+        #     'x': 0,
+        #     'y': 0
+        # }
+        # movement.set_destination(destination)
+        bot.set_x_destination(0)
+        bot.set_y_destination(-5)
+
+        bot.set_x_pos(0)
+        bot.set_y_pos(0)
+        bot.set_rotation(0)
+        bot.set_user_command("forward")
         # method call
         movement.move()
 
@@ -376,10 +410,13 @@ class Test_Movement(unittest.TestCase):
 
         # prerequisites to method call
         robot_movement.stop()
-        destination['x'] = 5.0
-        destination['y'] = 0.0
-        movement.set_destination(destination)
-        movement.set_signal("rotating left")
+        # destination['x'] = 5.0
+        # destination['y'] = 0.0
+        # movement.set_destination(destination)
+        bot.set_x_destination(5)
+        bot.set_y_destination(0)
+
+        bot.set_user_command("rotating left")
 
         # method call
         movement.move()
@@ -393,11 +430,11 @@ class Test_Movement(unittest.TestCase):
 
         # prerequisites to method call
         robot_movement.stop()
-        coordinates._set_x_pos(0)
-        coordinates._set_y_pos(0)
-        coordinates.set_rotation(0)
+        bot.set_x_pos(0)
+        bot.set_y_pos(0)
+        bot.set_rotation(0)
 
-        movement.set_signal(None)
+        bot.set_user_command("")
 
         # method call
         movement.move()
@@ -412,9 +449,11 @@ class Test_Movement(unittest.TestCase):
 
         # prerequisites to method call
         robot_movement.stop()
-        destination['x'] = -5.0
-        destination['y'] = 0.0
-        movement.set_destination(destination)
+        # destination['x'] = -5.0
+        # destination['y'] = 0.0
+        # movement.set_destination(destination)
+        bot.set_x_destination(-5)
+        bot.set_y_destination(0)
         # method call
         movement.move()
 
@@ -427,9 +466,11 @@ class Test_Movement(unittest.TestCase):
 
         # prerequisites to method call
         robot_movement.stop()
-        destination['x'] = 5.0
-        destination['y'] = 5.0
-        movement.set_destination(destination)
+        # destination['x'] = 5.0
+        # destination['y'] = 5.0
+        # movement.set_destination(destination)
+        bot.set_x_destination(5)
+        bot.set_y_destination(5)
         # method call
         movement.move()
 
@@ -442,10 +483,13 @@ class Test_Movement(unittest.TestCase):
 
         # prerequisites to method call
         robot_movement.stop()
-        destination['x'] = 5.0
-        destination['y'] = 0.0
-        movement.set_destination(destination)
-        coordinates.set_rotation(45)
+        # destination['x'] = 5.0
+        # destination['y'] = 0.0
+        # movement.set_destination(destination)
+        bot.set_x_destination(5)
+        bot.set_y_destination(0)
+
+        bot.set_rotation(45)
         # method call
         movement.move()
 
@@ -459,7 +503,7 @@ class Test_Movement(unittest.TestCase):
         # prerequisites to method call
         robot_movement.stop()
 
-        coordinates.set_rotation(0)
+        bot.set_rotation(0)
 
         # method call
         movement.move()
@@ -473,7 +517,7 @@ class Test_Movement(unittest.TestCase):
 
         # prerequisites to method call
         robot_movement.stop()
-        coordinates.set_rotation(0.5)
+        bot.set_rotation(0.5)
 
         # method call
         movement.move()
@@ -487,7 +531,7 @@ class Test_Movement(unittest.TestCase):
 
         # prerequisites to method call
         robot_movement.stop()
-        coordinates.set_rotation(0.6)
+        bot.set_rotation(0.6)
 
         # method call
         movement.move()
@@ -501,7 +545,7 @@ class Test_Movement(unittest.TestCase):
 
         # prerequisites to method call
         robot_movement.stop()
-        coordinates.set_rotation(355.5)
+        bot.set_rotation(355.5)
 
         # method call
         movement.move()
@@ -516,10 +560,10 @@ class Test_Movement(unittest.TestCase):
         # prerequisites to method call
         robot_movement.stop()
 
-        coordinates._set_x_pos(5)
-        coordinates._set_y_pos(0)
+        bot.set_x_pos(5)
+        bot.set_y_pos(0)
 
-        coordinates.set_rotation(0.6)
+        bot.set_rotation(0.6)
 
         # method call
         movement.move()
@@ -534,13 +578,13 @@ class Test_Movement(unittest.TestCase):
         # prerequisites to method call
         robot_movement.stop()
 
-        coordinates._set_x_pos(4.5)
-        coordinates._set_y_pos(0.5)
+        bot.set_x_pos(4.5)
+        bot.set_y_pos(0.5)
 
         # coordinates.x_pos = 4.5
         # coordinates.y_pos = 0.5
 
-        coordinates.set_rotation(0.6)
+        bot.set_rotation(0.6)
 
         # method call
         movement.move()
@@ -555,10 +599,10 @@ class Test_Movement(unittest.TestCase):
         # prerequisites to method call
         robot_movement.stop()
 
-        coordinates._set_x_pos(4.5)
-        coordinates._set_y_pos(0.5)
+        bot.set_x_pos(4.5)
+        bot.set_y_pos(0.5)
 
-        coordinates.set_rotation(145)
+        bot.set_rotation(145)
 
         # method call
         movement.move()

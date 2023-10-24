@@ -1,10 +1,6 @@
 package com.AMRCapstone.AMRCapstone.controller;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,7 +24,6 @@ import com.AMRCapstone.AMRCapstone.access.QR_Queue;
 import com.AMRCapstone.AMRCapstone.access.RobotAccess;
 import com.AMRCapstone.AMRCapstone.model.QR;
 import com.AMRCapstone.AMRCapstone.model.Robot;
-import com.AMRCapstone.AMRCapstone.service.RobotService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
@@ -63,13 +58,6 @@ public class RobotControllerTest {
         QR_Queue.resetQueue(temp9);
     }
 
-    // @Test
-    // void testGet() {
-    // initialize();
-    // createRobotService(new RobotService());
-    // assertTrue(RobotAccess.getRobot().equals(robotService.get()), "");
-    // }
-
     @Autowired
     private WebApplicationContext webApplicationContext;
     private MockMvc mockMvc;
@@ -89,10 +77,10 @@ public class RobotControllerTest {
         temp.addtoLoggerList("Waiting for robot to connect");
         // temp.setUserSignal("Forward");
         return temp.toString();
-        // "{\"id\":1,\"status\":\"Inactive\",\"message\":\"Connecting\",\"x_pos\":0.0,\"y_pos\":0.0,\"rotation\":0.0,\"x_destination\":0.0,\"y_destination\":0.0,\"qrScan\":null,\"loggerList\":[\"Waiting
-        // for robot to connect\"],\"userSignal\":null,\"image\":null}";
+
     }
 
+    // Test for getting robot information
     @Test
     void testGetRobot() throws Exception {
         initialize();
@@ -107,6 +95,7 @@ public class RobotControllerTest {
         assertEquals(baseRobotToStringExpected(), content, "Response was not as expected");
     }
 
+    // Test for getting user control commands
     @Test
     void testGetUserControl() throws Exception {
         initialize();
@@ -120,8 +109,22 @@ public class RobotControllerTest {
         // Compare the content with the expected string
         // null value will be sent back as ""
         assertEquals("", content, "Response was not as expected");
+
+        RobotAccess.getRobot().setUserSignal("Forward");
+        // Creating a GET request
+        request = MockMvcRequestBuilders.get("/robot/user");
+        result = mockMvc.perform(request).andReturn();
+
+        // Extract the content from the response
+        content = result.getResponse().getContentAsString();
+
+        // Compare the content with the expected string
+        // null value will be sent back as ""
+        assertEquals("Forward", content, "Response was not as expected");
+
     }
 
+    // Test for updating robot information
     @Test
     void testUpdateRobot() throws Exception {
         initialize();
@@ -152,9 +155,6 @@ public class RobotControllerTest {
 
         // Expected float[] response based on the input
         float[] expectedResponse = { 3, 3 };
-
-        // (response.length == 2? (response[0] + " " + response[1]) : (response[0] + " "
-        // + response[1] + " " + response[2] + " " + response[3]))
 
         // Compare the content with the expected float[] response
         assertArrayEquals(expectedResponse, response,
@@ -190,9 +190,6 @@ public class RobotControllerTest {
         expectedResponse[1] = 3;
         expectedResponse[2] = 3;
         expectedResponse[3] = 3;
-
-        // (response.length == 2? (response[0] + " " + response[1]) : (response[0] + " "
-        // + response[1] + " " + response[2] + " " + response[3]))
 
         // Compare the content with the expected float[] response
         assertArrayEquals(expectedResponse, response,

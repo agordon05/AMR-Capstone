@@ -2,16 +2,17 @@ import time
 import numpy
 from Movement import coordinates
 from Robot_command import robot_movement
+from Model import robot as bot
 
-__destination = {
-    'x': 0,
-    'y': 1,
-}
-# _source = {
+# __destination = {
 #     'x': 0,
-#     'y': 0,
+#     'y': 1,
 # }
-__signal = None  # Allows outside component to control the movement
+# # _source = {
+# #     'x': 0,
+# #     'y': 0,
+# # }
+# __signal = None  # Allows outside component to control the movement
 
 __position_percentage_error = 0.1  # percentage error allowed for how close robot can be to destination or source to not
 # move
@@ -25,28 +26,28 @@ __rotation_percentage_error = 10  # percentage error allowed for how close the r
 __movement_change_time_delay = 0.3  # delay is in seconds
 
 
-def set_destination(dest: dict):
-    global __destination
-    __destination['x'] = dest['x']
-    __destination['y'] = dest['y']
-
-
-def get_destination():
-    global __destination
-    destination = {
-        'x': __destination['x'],
-        'y': __destination['y']
-    }
-    return destination
-
-# def set_source(source: dict):
-#     global _source
-#     _source = source
-
-
-def set_signal(signal):
-    global __signal
-    __signal = signal
+# def set_destination(dest: dict):
+#     global __destination
+#     __destination['x'] = dest['x']
+#     __destination['y'] = dest['y']
+#
+#
+# def get_destination():
+#     global __destination
+#     destination = {
+#         'x': __destination['x'],
+#         'y': __destination['y']
+#     }
+#     return destination
+#
+# # def set_source(source: dict):
+# #     global _source
+# #     _source = source
+#
+#
+# def set_signal(signal):
+#     global __signal
+#     __signal = signal
 
 
 # def get_signal():
@@ -66,7 +67,7 @@ def _set_rotation_error(num):
 
 
 def move():
-    global __signal
+    # global __signal
 
     # another component is telling the robot where to go
     print("getting signal")
@@ -84,9 +85,9 @@ def move():
         # calculate rotation needed
         angle_needed = get_rotation_needed()
         # if direction is not close, rotate
-        if is_rotation_there(coordinates.get_rotation(), angle_needed) is False:
+        if is_rotation_there(bot.get_rotation(), angle_needed) is False:
             # figure out how whether to rotate left or right
-            if is_rotate_left(coordinates.get_rotation(), angle_needed) is True:
+            if is_rotate_left(bot.get_rotation(), angle_needed) is True:
                 control = "rotating left"
                 print("rotating left")
             else:
@@ -109,28 +110,37 @@ def move():
 
 
 def get_signal():
-    global __signal
-    # another component is telling the robot where to go
-    if __signal is not None:
-        if __signal == "forward" or __signal == "backward" or __signal == "rotating left" or __signal == "rotating right" or __signal == "stop":
-            return __signal
+
+    signal = bot.get_user_command()
+
+    # user is telling the robot where to go
+    if signal is not None:
+        if signal == "forward" or signal == "backward" or signal == "rotating left" or signal == "rotating right" or signal == "stop":
+            return signal
         else:
-            __signal = None
+            bot.set_user_command("")
+
+    signal = bot.get_robot_command()
+
+    # another robot component is telling the robot where to go
+    if signal is not None:
+        if signal == "forward" or signal == "backward" or signal == "rotating left" or signal == "rotating right" or signal == "stop":
+            return signal
+        else:
+            bot.set_robot_command("")
 
     return None
 
 
 # finds out if robot is at or close enough to destination
 def at_destination() -> bool:
-    global __destination, __position_percentage_error
-    dest_x = __destination['x']
-    dest_y = __destination['y']
-    x_pos = coordinates.get_x_pos()
-    y_pos = coordinates.get_y_pos()
-    per_error = __position_percentage_error
+    global __position_percentage_error
 
-    # pos_x_diff = numpy.absolute(x_pos - dest_x)  # distance from destination on x axis
-    # pos_y_diff = numpy.absolute(y_pos - dest_y)  # distance from destination on y axis
+    dest_x: float = bot.get_x_destination()
+    dest_y: float = bot.get_y_destination()
+    x_pos: float = bot.get_x_pos()
+    y_pos: float = bot.get_y_pos()
+    per_error = __position_percentage_error
 
     diff = numpy.sqrt(numpy.square(x_pos - dest_x) + numpy.square(y_pos - dest_y))  # sqrt((x1 - x2)^2 + (y1 - y2)^2)
 
@@ -151,52 +161,39 @@ def is_rotation_there(angle: float, angle_needed: float) -> bool:
 
 # returns the rotation needed in degrees
 def get_rotation_needed() -> float:
-    global __destination
-    x_pos = coordinates.get_x_pos()  # current x position
-    y_pos = coordinates.get_y_pos()  # current y position
 
-    # NOT NEEDED -- there is a check method, at_destination that checks this beforehand
-    # if x_pos == _destination['x'] and y_pos == _destination['y']:
-    #     return None
+    x_pos: float = bot.get_x_pos()  # current x position
+    y_pos: float = bot.get_y_pos()  # current y position
+    x_destination: float = bot.get_x_destination()
+    y_destination: float = bot.get_y_destination()
 
-    if x_pos == __destination['x']:
-        if y_pos < __destination['y']:
+    if x_pos == x_destination:
+        if y_pos < y_destination:
             angle_needed = 90
         else:
             angle_needed = 270
 
-    elif y_pos == __destination['y']:
-        if x_pos > __destination['x']:
+    elif y_pos == y_destination:
+        if x_pos > x_destination:
             angle_needed = 180
         else:
             angle_needed = 0
 
     else:
-        slope = (y_pos - __destination['y']) / (x_pos - __destination['x'])  # finds slope
-        # print(f'slope: {slope}')
+        slope = (y_pos - y_destination) / (x_pos - x_destination)  # finds slope
+
         angle_needed = numpy.arctan(slope)  # converts slope to angle
         angle_needed = numpy.rad2deg(angle_needed)  # converts radians to degrees
 
-        # if slope > 0:
         # arctan only operates from 90 to -90, missing 2nd and 3rd quadrant of the circle i.e. 90 to 270 degrees
-        if __destination['x'] < x_pos:  # finds if destination is in 2nd or 3rd quadrant of a circle
+        if x_destination < x_pos:  # finds if destination is in 2nd or 3rd quadrant of a circle
             angle_needed += 180  # adds 180 to angle if it is
-        #     else:
-        #         pass
-        # else:
-        #     if _destination['x'] < x_pos:
-        #         angle_needed += 180
-        #     else:
-        #         pass
-        #     pass
 
-        #ensures angle is within 0 and 360
+        # ensures angle is within 0 and 360
         while angle_needed < 0:
             angle_needed += 360
         while angle_needed >= 360:
             angle_needed -= 360
-
-        # print(angle_needed)
 
     return angle_needed
 
