@@ -2,8 +2,6 @@ import os
 import sys
 import numpy
 import cv2
-import ipywidgets.widgets as widgets
-
 import traitlets
 import ipywidgets.widgets as widgets
 from IPython.display import display
