@@ -5,7 +5,7 @@ import cv2
 import traitlets
 import ipywidgets.widgets as widgets
 from IPython.display import display
-from jetbot import Camera, bgr8_to_jpeg
+from jetbot import Camera, bgr8_to_jpeg #try jetcam import for reading images
 
 camera = Camera.instance(width=224, height=224)
 
