@@ -10,8 +10,9 @@ import ipywidgets.widgets as widgets
 directory = '~/jetbot'
 directory = os.path.expanduser(directory)
 sys.path.append(directory)
-# from jetbot import ..
+from jetbot import Camera, bgr8_to_jpeg
 
+robot
 
 #print data array
 #cv2.imwrite(image, mode = 'RGB')
