@@ -12,7 +12,7 @@ directory = os.path.expanduser(directory)
 sys.path.append(directory)
 from jetbot import Camera, bgr8_to_jpeg
 
-robot
+#robot
 
 #print data array
 #cv2.imwrite(image, mode = 'RGB')
