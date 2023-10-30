@@ -10,6 +10,5 @@ import ipywidgets.widgets as widgets
 cap = cv2.VideoCapture(0)
 
 
-
 #print data array
 #cv2.imwrite(image, mode = 'RGB')
