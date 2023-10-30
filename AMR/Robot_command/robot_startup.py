@@ -7,13 +7,13 @@ directory = os.path.expanduser(directory)
 sys.path.append(directory)
 
 from jetbot import robot
-import Movement.movement
+from Movement import movement
 
 # robot object
 robot = robot.Robot()
 
 # move thread
-movement_thread = threading.Thread(target=Movement.movement.run())
+movement_thread = threading.Thread(target=movement.run())
 
 
 def run():
