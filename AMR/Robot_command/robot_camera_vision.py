@@ -1,6 +1,6 @@
 import os
 import sys
-from AMR.Robot_command import robot_startup
+from Robot_command import robot_startup
 import numpy
 import cv2
 import traitlets
