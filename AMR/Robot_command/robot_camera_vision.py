@@ -10,7 +10,7 @@ import ipywidgets.widgets as widgets
 directory = '~/jetbot'
 directory = os.path.expanduser(directory)
 sys.path.append(directory)
-#from jetbot import Camera, bgr8_to_jpeg
+from jetbot import Camera, bgr8_to_jpeg
 
 print("numpy")
 
