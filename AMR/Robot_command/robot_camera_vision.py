@@ -1,5 +1,6 @@
 import os
 import sys
+
 # import numpy
 # import cv2
 # import traitlets
@@ -12,7 +13,12 @@ import traitlets
 import ipywidgets.widgets as widgets
 from IPython.display import display
 from jetbot import Camera, bgr8_to_jpeg
+from uuid import uuid1
+import time
 
+dir = 'dataset/imageFeed'
+file_name = 'image.jpg'
+sleep_time = 5
 
 # should only display a live image feed
 def method():
@@ -22,14 +28,17 @@ def method():
     camera_link = traitlets.dlink((camera, 'value'), (image, 'value'), transform=bgr8_to_jpeg)
     display(image)
 
-# capture = cv2.VideoCapture(0)
-#
-# # while True:
-# ret, frame = capture.read()
-#
-# capture.release()
-# im = numpy.asarray(frame)
-# print(type(im)) #needs GStreamer pipeline implementation
-#
-# #print data array
-# #cv2.imwrite(image, mode = 'RGB')
+    try:
+        os.makedirs(dir)
+    except FileExistsError:
+        print('Directory not created because it already exists')
+
+    while True:
+        time.sleep(sleep_time)  # currently only captures images every [sleep_time] seconds
+        save_image(dir, image)
+
+
+def save_image(directory, image):
+    image_path = os.path.join(directory, file_name)
+    with open(image_path, 'wb') as f:
+        f.write(image.value)
