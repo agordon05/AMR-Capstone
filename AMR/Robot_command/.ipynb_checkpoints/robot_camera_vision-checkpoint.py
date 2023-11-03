@@ -1,6 +1,5 @@
 import os
 import sys
-
 # import numpy
 # import cv2
 # import traitlets
@@ -32,17 +31,7 @@ def method():
         os.makedirs(dir)
     except FileExistsError:
         print('Directory not created because it already exists')
-
-    while True:
-        time.sleep(sleep_time)  # currently only captures images every [sleep_time] seconds
-        save_image(dir, image)
-
-
-def save_image(directory, image):
-    image_path = os.path.join(directory, file_name)
-    with open(image_path, 'wb') as f:
-        f.write(image.value)
-
+    
     while True:
         time.sleep(sleep_time) #currently only captures images every 5 seconds
         save_image(dir, image)
