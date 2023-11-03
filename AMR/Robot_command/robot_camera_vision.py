@@ -13,7 +13,6 @@ import traitlets
 import ipywidgets.widgets as widgets
 from IPython.display import display
 from jetbot import Camera, bgr8_to_jpeg
-from uuid import uuid1
 import time
 
 dir = 'dataset/imageFeed'
@@ -43,14 +42,5 @@ def save_image(directory, image):
     with open(image_path, 'wb') as f:
         f.write(image.value)
 
-    while True:
-        time.sleep(sleep_time) #currently only captures images every 5 seconds
-        save_image(dir, image)
 
-
-
-def save_image(directory, image):
-    image_path = os.path.join(directory,  file_name)
-    with open(image_path, 'wb') as f:
-        f.write(image.value)
 
