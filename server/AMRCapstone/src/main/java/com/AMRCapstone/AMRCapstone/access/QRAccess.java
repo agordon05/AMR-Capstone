@@ -1,9 +1,6 @@
 package com.AMRCapstone.AMRCapstone.access;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +12,8 @@ public class QRAccess {
 
     private static Map<String, QR> QRList;
 
-    private final static String fileName = "/QR_Data.txt";
+    private final static String fileName = "QR_Data.txt";
+    private final static String splitChar = "#";
 
     private static BufferedReader bufferedReader = null;
 
@@ -23,26 +21,20 @@ public class QRAccess {
         // QR_Codes = new ArrayList<QR>();
         QRList = new HashMap<String, QR>();
 
-        // QRList.put("QR_Code_2_5", new QR("QR_Code_2_5", "Active", "image",
-        // "342wfer89", 2,
-        // 5));
-        // QRList.put("QR_Code_2_4", new QR("QR_Code_2_4", "Active", "image", "879g2f3",
-        // 2,
-        // 4));
-        // QRList.put("QR_Code_1_5", new QR("QR_Code_1_5", "Missing", "image",
-        // "f2g34798", 1,
-        // 5));
-
         // loadQRCodes();
     }
 
     public static void loadQRCodes() {
         try {
             // directory to current file, /../../ returns two directories which is where
-            // file is located
-            String filePath = new File("").getAbsolutePath() + fileName;
             // Create a FileReader and bufferedReader to read the file
-            FileReader fileReader = new FileReader(filePath);
+            File file = new File(fileName);
+            if (!file.exists()) {
+                System.out.println("file does not exist at: " + file.getAbsolutePath());
+                System.out.println(file.getCanonicalPath());
+                return;
+            }
+            FileReader fileReader = new FileReader(file);
             bufferedReader = new BufferedReader(fileReader);
 
             String line;
@@ -50,28 +42,27 @@ public class QRAccess {
 
             // Reads each line in data file
             while ((line = bufferedReader.readLine()) != null) {
+                System.out.println("another QR code");
                 // Prints line for testing
                 System.out.println(line);
 
                 // Splits data into tokens
-                String[] qrData = line.split("#");
+                String[] qrData = line.split(splitChar);
 
                 // Ensures correct number of tokens
                 if (qrData.length != 5)
                     throw new Exception("data is corrupted");
 
                 // Initializes data to objects
-                String fileName = qrData[0];
+                // String fileName = qrData[0]; /* --- NOT NEEDED - FOR REFERENCE WHEN LOOKING
+                // INTO FILE--- */
                 String qrCode = qrData[1];
                 int x_pos = Integer.parseInt(qrData[2]);
                 int y_pos = Integer.parseInt(qrData[3]);
                 String status = qrData[4];
 
-                // ---PLACEHOLDER---
-                String image = "image";
-
                 // Creates and adds qr object to access list
-                QR temp = new QR(fileName, status, image, qrCode, x_pos, y_pos);
+                QR temp = new QR(status, qrCode, x_pos, y_pos);
                 addQR(temp);
                 count++;
                 System.out.println(count);
@@ -95,11 +86,38 @@ public class QRAccess {
 
     }
 
+    public static void saveQRCodes() {
+        System.out.println("Saving QR Codes");
+
+        try {
+            File file = new File(fileName);
+            if (!file.exists()) {
+                file.createNewFile();
+            } else {
+                file.delete();
+                file.createNewFile();
+            }
+
+            FileWriter myWriter = new FileWriter(fileName);
+            for (QR q : QRList.values()) {
+                myWriter.append(q.toString() + "\n");
+            }
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        System.out.println("Finished Saving QR Codes");
+    }
+
     public static void addQR(QR qr) {
         if (qr == null)
             return;
         // QR_Codes.add(qr);
         QRList.put(qr.getName(), qr);
+        /* --- SHOULD BE COMMENTED OUT FOR TEST CASES --- */
+        saveQRCodes();
     }
 
     public static Map<String, QR> getQRs() {
@@ -107,16 +125,6 @@ public class QRAccess {
     }
 
     public static QR getQrByPosition(float x, float y) {
-
-        // Search through all of QR list
-        // for (int index = 0; index < QR_Codes.size(); index++) {
-
-        // // If QR code has the same x and y position, return QR
-        // if (QR_Codes.get(index).getX_pos() == x && QR_Codes.get(index).getY_pos() ==
-        // y) {
-        // return QR_Codes.get(index);
-        // }
-        // }
 
         for (QR qr : QRList.values()) {
             if (qr.getX_pos() == x && qr.getY_pos() == y) {
@@ -128,15 +136,6 @@ public class QRAccess {
     }
 
     public static QR getQrByQRCode(String QRCode) {
-
-        // Search through all of QR list
-        // for (int index = 0; index < QR_Codes.size(); index++) {
-
-        // // If QR has the same QR code, return QR
-        // if (QR_Codes.get(index).getCode().equals(QRCode)) {
-        // return QR_Codes.get(index);
-        // }
-        // }
 
         for (QR qr : QRList.values()) {
             if (qr.getCode().equals(QRCode)) {
@@ -159,14 +158,6 @@ public class QRAccess {
             if (x_pos == x && y_pos == y)
                 continue;
 
-            // if(x_pos == x){
-            // if(Math.abs(y_pos - y) <= 1){
-
-            // }
-            // }
-            // else if (y_pos == y){
-
-            // }
             // If x and y coordinates of QR are 1 away, add to list
             else if (Math.abs(x_pos - x) <= 1 && Math.abs(y_pos - y) <= 1) {
                 list.add(qr);

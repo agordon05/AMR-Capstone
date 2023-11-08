@@ -29,34 +29,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @SpringBootTest
 public class RobotControllerTest {
 
+    /*
+     *
+     * ------NOTE------
+     * QRAccess.saveQRCodes(); should be commented out before testing in
+     * the QR.java file, (method - setStatus()),
+     * and saveQRCodes(); in the QRAccess.java file, (method - addQR(QR qr))---
+     * 
+     */
+
     // private RobotService robotService;
 
     // public void createRobotService(RobotService robotService) {
     // this.robotService = robotService;
     // }
-
-    QR temp = new QR("QR_Code_1_1", Codes.QRActive, "image", "test", 1, 1);
-    QR temp2 = new QR("QR_Code_1_2", Codes.QRActive, "image", "test2", 1, 2);
-    QR temp3 = new QR("QR_Code_1_3", Codes.QRActive, "image", "test3", 1, 3);
-    QR temp4 = new QR("QR_Code_2_1", Codes.QRActive, "image", "test4", 2, 1);
-    QR temp5 = new QR("QR_Code_2_2", Codes.QRLost, "image", "test5", 2, 2);
-    QR temp6 = new QR("QR_Code_2_3", Codes.QRLost, "image", "test6", 2, 3);
-    QR temp7 = new QR("QR_Code_3_1", Codes.QRActive, "image", "test7", 3, 1);
-    QR temp8 = new QR("QR_Code_3_2", Codes.QRActive, "image", "test8", 3, 2);
-    QR temp9 = new QR("QR_Code_3_3", Codes.QRActive, "image", "test9", 3, 3);
-
-    void initialize() {
-        QR_Queue.initialize();
-        QRAccess.initialize();
-        RobotAccess.initialize();
-        QRAccess.addQR(temp);
-        QRAccess.addQR(temp2);
-        QRAccess.addQR(temp3);
-        QRAccess.addQR(temp4);
-        QRAccess.addQR(temp5);
-        QRAccess.addQR(temp6);
-        QR_Queue.resetQueue(temp9);
-    }
 
     @Autowired
     private WebApplicationContext webApplicationContext;
@@ -70,6 +56,29 @@ public class RobotControllerTest {
                 .map(name -> webApplicationContext.getBean(name).getClass().getName())
                 .sorted()
                 .forEach(System.out::println);
+    }
+
+    QR temp = new QR(Codes.QRActive, "test", 1, 1);
+    QR temp2 = new QR(Codes.QRActive, "test2", 1, 2);
+    QR temp3 = new QR(Codes.QRActive, "test3", 1, 3);
+    QR temp4 = new QR(Codes.QRActive, "test4", 2, 1);
+    QR temp5 = new QR(Codes.QRLost, "test5", 2, 2);
+    QR temp6 = new QR(Codes.QRLost, "test6", 2, 3);
+    QR temp7 = new QR(Codes.QRActive, "test7", 3, 1);
+    QR temp8 = new QR(Codes.QRActive, "test8", 3, 2);
+    QR temp9 = new QR(Codes.QRActive, "test9", 3, 3);
+
+    void initialize() {
+        QR_Queue.initialize();
+        QRAccess.initialize();
+        RobotAccess.initialize();
+        QRAccess.addQR(temp);
+        QRAccess.addQR(temp2);
+        QRAccess.addQR(temp3);
+        QRAccess.addQR(temp4);
+        QRAccess.addQR(temp5);
+        QRAccess.addQR(temp6);
+        QR_Queue.resetQueue(temp9);
     }
 
     private String baseRobotToStringExpected() {
@@ -153,7 +162,11 @@ public class RobotControllerTest {
         // Convert the content to a float[] using Jackson ObjectMapper
         float[] response = new ObjectMapper().readValue(content, float[].class);
 
-        // Expected float[] response based on the input
+        // Expected float[] response based on the input -- destination = (3, 3)
+        // This response can be expected because when we initialize the QR Queue we set
+        // the first destination to position (3, 3) and when we update the robot, no qr
+        // was scanned so there is no update on the Queue and and no position to update
+        // for the robot
         float[] expectedResponse = { 3, 3 };
 
         // Compare the content with the expected float[] response
@@ -184,10 +197,14 @@ public class RobotControllerTest {
         // Convert the content to a float[] using Jackson ObjectMapper
         response = new ObjectMapper().readValue(content, float[].class);
 
-        // Expected float[] response based on the input
+        // Expected float[] response based on the input -- expecting response of
+        // {2,2,3,3} i.e. destination = (2, 3), position = (3, 3)
+        // this response can be expected because of the three QR codes, two of them are
+        // marked as lost, meaning they cannot be chosen, leaving only one QR code to go
+        // to
         expectedResponse = new float[4];
         expectedResponse[0] = 2;
-        expectedResponse[1] = 3;
+        expectedResponse[1] = 2;
         expectedResponse[2] = 3;
         expectedResponse[3] = 3;
 
