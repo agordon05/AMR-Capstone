@@ -1,23 +1,25 @@
 import os
 import sys
+import sensor
+# import image #used in [https://www.youtube.com/watch?v=PffDblwNshM], may be needed
+import cv2
+import time
+import math
+from pylibdmtx.pylibdmtx import decode
 
-# import numpy
-# import cv2
-# import traitlets
-# import ipywidgets.widgets as widgets
 directory = '~/jetbot'
 directory = os.path.expanduser(directory)
 sys.path.append(directory)
-# from jetbot import Camera #this is part that gives numpy error
 import traitlets
 import ipywidgets.widgets as widgets
 from IPython.display import display
 from jetbot import Camera, bgr8_to_jpeg
-import time
 
 dir = 'dataset/imageFeed'
 file_name = 'image.jpg'
 sleep_time = 5
+
+#detector = cv2.QRCodeDetector
 
 # should only display a live image feed
 def method():
@@ -36,6 +38,11 @@ def method():
         time.sleep(sleep_time)  # currently only captures images every [sleep_time] seconds
         save_image(dir, image)
 
+# ^ convert image to grayscale
+#
+#
+#
+#
 
 def save_image(directory, image):
     image_path = os.path.join(directory, file_name)
