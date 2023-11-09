@@ -80,6 +80,7 @@ public class RobotService {
         return response;
     }
 
+    /* ---NOT AN API CALL--- */
     private HttpStatus getQRStatus(Robot robot) {
 
         if (robot.getQrScan() == null) {

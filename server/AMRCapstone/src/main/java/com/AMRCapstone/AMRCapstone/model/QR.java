@@ -1,5 +1,7 @@
 package com.AMRCapstone.AMRCapstone.model;
 
+import com.AMRCapstone.AMRCapstone.Codes;
+import com.AMRCapstone.AMRCapstone.access.QRAccess;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -11,22 +13,24 @@ public class QR {
     private String name;
     @NotEmpty
     private String status;
-    @NotEmpty
-    private String image;
+
     @NotEmpty
     private String code;
 
     private float x_pos;
     private float y_pos;
 
+    private static final String typeBreaker = "#";
+
     public QR() {
 
     }
 
-    public QR(String name, String status, String image, String code, float x_pos, float y_pos) {
-        this.name = name;
+    public QR(/* String name, */String status, String code, float x_pos, float y_pos) {
+        if ((status != Codes.QRActive && status != Codes.QRLost) || code == null)
+            return;
+        this.name = "QR_Code_" + x_pos + "_" + y_pos;
         this.status = status;
-        this.image = image;
         this.code = code;
         this.x_pos = x_pos;
         this.y_pos = y_pos;
@@ -37,14 +41,13 @@ public class QR {
         return name;
     }
 
+    public String getFileName() {
+        return name + ".jpg";
+    }
+
     @JsonProperty("status")
     public String getStatus() {
         return status;
-    }
-
-    @JsonProperty("image")
-    public String getImage() {
-        return image;
     }
 
     @JsonProperty("code")
@@ -62,7 +65,21 @@ public class QR {
         return y_pos;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setStatus(String statusUpdate) {
+        if (!this.status.equals(statusUpdate)) {
+            this.status = statusUpdate;
+            /* --- SHOULD BE COMMENTED OUT FOR TEST CASES --- */
+            QRAccess.saveQRCodes();
+        }
+
     }
+
+    @Override
+    public String toString() {
+        /* QR_Code_1_1#00000000010000010#1#1#Active */
+
+        return name + typeBreaker + code + typeBreaker + (int) (x_pos) + typeBreaker + (int) (y_pos) + typeBreaker
+                + status;
+    }
+
 }
