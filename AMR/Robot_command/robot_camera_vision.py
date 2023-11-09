@@ -5,7 +5,7 @@ import sensor
 import cv2
 import time
 import math
-# import libdmtx
+from pylibdmtx.pylibdmtx import decode
 
 directory = '~/jetbot'
 directory = os.path.expanduser(directory)
