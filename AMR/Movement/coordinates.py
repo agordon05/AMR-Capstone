@@ -3,46 +3,12 @@ from datetime import datetime
 from Robot_command import robot_movement
 from Model import robot as bot
 
-# __x_pos: float = 0
-# __y_pos: float = 0
-# __direction_in_degrees = 0  # direction is in degrees for easy understanding
-
 __movement_scale = 0.24  # scale of movement assuming constant speed
 __rotation_scale = 0.12  # scale of rotation assuming constant speed
 __wheel_bias = 0.00001  # when moving straight, how far is the robot drifting, positive number means robot is drifting to the right, negaative to the left
 # when starting up, time of last update will be start time of program in milliseconds
 __time_of_last_update_ms = 0  # is in milliseconds for precision
 __time_converter_ms_s = 1 / 1000  # to be multiplied to time to convert milliseconds to seconds
-
-
-# def get_x_pos():
-#     global __x_pos
-#     return __x_pos
-#
-#
-# def _set_x_pos(x):
-#     global __x_pos
-#     __x_pos = x
-#
-#
-# def get_y_pos():
-#     global __y_pos
-#     return __y_pos
-#
-#
-# def _set_y_pos(y):
-#     global __y_pos
-#     __y_pos = y
-
-
-# def get_rotation():
-#     global __direction_in_degrees
-#     return __direction_in_degrees
-
-
-# def set_rotation(rotation):
-#     global  __direction_in_degrees
-#     __direction_in_degrees = rotation
 
 
 def _set_time_of_last_update(time):
