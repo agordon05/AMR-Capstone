@@ -13,7 +13,7 @@ from Movement import movement
 robot = robot.Robot()
 
 # move thread
-movement_thread = threading.Thread(target=movement.run())
+movement_thread = threading.Thread(target=movement.run)
 
 
 def run():
