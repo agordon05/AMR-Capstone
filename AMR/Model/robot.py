@@ -24,23 +24,23 @@ def get_message():
     return __message
 
 
-def get_x_pos():
+def get_x_pos() -> float:
     return __x_pos
 
 
-def get_y_pos():
+def get_y_pos() -> float:
     return __y_pos
 
 
-def get_rotation():
+def get_rotation() -> float:
     return __rotation
 
 
-def get_x_destination():
+def get_x_destination() -> float:
     return __x_destination
 
 
-def get_y_destination():
+def get_y_destination() -> float:
     return __y_destination
 
 
