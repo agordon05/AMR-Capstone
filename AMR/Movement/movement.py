@@ -4,15 +4,6 @@ from Movement import coordinates
 from Robot_command import robot_movement
 from Model import robot as bot
 
-# __destination = {
-#     'x': 0,
-#     'y': 1,
-# }
-# # _source = {
-# #     'x': 0,
-# #     'y': 0,
-# # }
-# __signal = None  # Allows outside component to control the movement
 
 __position_percentage_error = 0.1  # percentage error allowed for how close robot can be to destination or source to not
 # move
@@ -24,36 +15,6 @@ __rotation_percentage_error = 10  # percentage error allowed for how close the r
 # 0.05 corresponds to an accuracy of give or take 5 degrees.  if the degree needed is 100, rotation can be between 95
 # and 105
 __movement_change_time_delay = 0.3  # delay is in seconds
-
-
-# def set_destination(dest: dict):
-#     global __destination
-#     __destination['x'] = dest['x']
-#     __destination['y'] = dest['y']
-#
-#
-# def get_destination():
-#     global __destination
-#     destination = {
-#         'x': __destination['x'],
-#         'y': __destination['y']
-#     }
-#     return destination
-#
-# # def set_source(source: dict):
-# #     global _source
-# #     _source = source
-#
-#
-# def set_signal(signal):
-#     global __signal
-#     __signal = signal
-
-
-# def get_signal():
-#     global __signal
-#     return __signal
-# same method below
 
 
 def _set_position_error(num):
