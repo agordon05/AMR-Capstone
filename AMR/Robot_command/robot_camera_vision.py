@@ -1,6 +1,6 @@
 import os
 import sys
-import sensor
+# import sensor
 
 # import image #used in [https://www.youtube.com/watch?v=PffDblwNshM], may be needed
 import cv2
