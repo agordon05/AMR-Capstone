@@ -6,6 +6,7 @@ import sys
 import cv2
 import time
 import math
+import pylibdmtx.pylibdmtx
 from pylibdmtx.pylibdmtx import decode
 
 directory = '~/jetbot'
