@@ -6,7 +6,7 @@ import sys
 import cv2
 import time
 import math
-# import pylibdmtx
+# import pylibdmtx #import error
 
 directory = '~/jetbot'
 directory = os.path.expanduser(directory)
