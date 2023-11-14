@@ -66,7 +66,7 @@ def move():
     if is_move_change(control) is True:
         # print("changing movement")
         move_change(control)
-    else:
+    # else:
         # print("movement did not change")
 
 
