@@ -30,8 +30,9 @@ def get_image():
 # converts image to byte[] and sends it to the robot object
 def send_to_robot():
     if __image:
-        image_in_byte = __image.value
-        bot.set_image(image_in_byte)
+        image_value = __image.value
+        image_byte_array = list(image_value)
+        bot.set_image(image_byte_array)
 
 # should only display a live image feed
 def run():
