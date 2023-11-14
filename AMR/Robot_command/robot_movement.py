@@ -6,22 +6,16 @@ sys.path.append(directory)
 from jetbot import robot
 
 
-# global direction variables
-__moving_forward = False
-__moving_backward = False
-__rotating_left = False
-__rotating_right = False
-
 # robot speed
 __movement_speed = 0.25
 __rotation_speed = 0.12
 
 # a dictionary to map directions to boolean flags
 __direction_flags = {
-    "forward": __moving_forward,
-    "backward": __moving_backward,
-    "rotating left": __rotating_left,
-    "rotating right": __rotating_right
+    "forward": False,
+    "backward": False,
+    "rotating left": False,
+    "rotating right": False
 }
 
 
