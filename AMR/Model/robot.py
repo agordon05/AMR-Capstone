@@ -122,3 +122,22 @@ def set_image(image):
 def add_to_log(log):
     global __log
     __log = __log + log
+
+
+def to_json():
+    json = {
+        'id': __id,
+        'status': "Active",
+        'message': __message,
+        'x_pos': __x_pos,
+        'y_pos': __y_pos,
+        'rotation': __rotation,
+        'x_destination': __x_destination,
+        'y_destination': __y_destination,
+        'qrScan': __qr_scan,
+        'loggerList': __log,
+        # 'userSignal': None,
+        'image': __image
+            }
+    return json
+
