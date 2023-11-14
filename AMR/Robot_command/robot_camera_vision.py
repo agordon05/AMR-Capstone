@@ -41,7 +41,7 @@ def run():
     __image = widgets.Image(format='jpeg', width=224,
                           height=224)  # this width and height doesn't necessarily have to match the camera
     camera_link = traitlets.dlink((camera, 'value'), (__image, 'value'), transform=bgr8_to_jpeg)
-    display(image)
+    display(__image)
 
     # try:
     #     os.makedirs(dir)
