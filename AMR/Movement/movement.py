@@ -31,18 +31,18 @@ def move():
     # global __signal
 
     # another component is telling the robot where to go
-    print("getting signal")
+    # print("getting signal")
     control = get_signal()
 
     # if at destination, do nothing
     if control is None:
-        print("is at destination")
+        # print("is at destination")
         if at_destination() is True:
             control = "stop"
-            print("control is stop")
+            # print("control is stop")
 
     if control is None:
-        print("where to turn?")
+        # print("where to turn?")
         # calculate rotation needed
         angle_needed = get_rotation_needed()
         # if direction is not close, rotate
@@ -50,24 +50,24 @@ def move():
             # figure out how whether to rotate left or right
             if is_rotate_left(bot.get_rotation(), angle_needed) is True:
                 control = "rotating left"
-                print("rotating left")
+                # print("rotating left")
             else:
                 control = "rotating right"
-                print("rotating right")
+                # print("rotating right")
 
     if control is None:
         control = "forward"
-        print("moving forward")
+        # print("moving forward")
 
     # update coordinates
     coordinates.update()
 
     # change movement
     if is_move_change(control) is True:
-        print("changing movement")
+        # print("changing movement")
         move_change(control)
     else:
-        print("movement did not change")
+        # print("movement did not change")
 
 
 def get_signal():
