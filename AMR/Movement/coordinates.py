@@ -34,7 +34,7 @@ def update():
 
     elif flags['rotating right'] is True:
         rotate_right(time)
-    print(f'x pos: {bot.get_x_pos()} -- y pos: {bot.get_y_pos()} -- degrees: {bot.get_rotation()}')
+    # print(f'x pos: {bot.get_x_pos()} -- y pos: {bot.get_y_pos()} -- degrees: {bot.get_rotation()}')
 
 
 def __wheel_bias_update(time: float):
