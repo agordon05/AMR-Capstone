@@ -72,7 +72,7 @@ def move_forward(time):
 
     time *= __time_converter_ms_s  # converts millisecond to second
 
-    angle_rotation = numpy.deg2rad(bot.get_rotation)  # rotation angle has to be in radians
+    angle_rotation = numpy.deg2rad(bot.get_rotation())  # rotation angle has to be in radians
 
     # gets the coordinates of the robot
     x_pos: float = bot.get_x_pos()
@@ -94,7 +94,7 @@ def move_backward(time):
     global __movement_scale, __time_converter_ms_s
 
     time *= __time_converter_ms_s  # converts millisecond to second
-    angle_rotation = numpy.deg2rad(bot.get_rotation)  # rotation angle has to be in radians
+    angle_rotation = numpy.deg2rad(bot.get_rotation())  # rotation angle has to be in radians
 
     # gets the coordinates of the robot
     x_pos: float = bot.get_x_pos()
