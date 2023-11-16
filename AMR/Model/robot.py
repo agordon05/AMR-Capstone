@@ -9,7 +9,7 @@ __rotation: float = 0
 
 # Destination
 __x_destination: float = 0
-__y_destination: float = 1
+__y_destination: float = 0
 
 # Relevant info
 __qr_scan: str = ""
