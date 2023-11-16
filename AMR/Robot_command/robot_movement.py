@@ -178,21 +178,21 @@ def control_backward():
     global __movement_speed 
     coordinates.update()
     robot_startup.robot.backward(__movement_speed)
-        _change_direction("backward")
+    _change_direction("backward")
 
     
 def control_left():
     global __rotation_speed 
     coordinates.update()
     robot_startup.robot.left(__rotation_speed)
-        _change_direction("rotating left")
+    _change_direction("rotating left")
 
     
 def control_right():
     global __rotation_speed 
     coordinates.update()
     robot_startup.robot.right(__rotation_speed)
-        _change_direction("rotating right")
+    _change_direction("rotating right")
 
     
 def control_stop():
