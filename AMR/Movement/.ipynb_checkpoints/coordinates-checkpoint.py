@@ -11,8 +11,6 @@ __time_of_last_update_ms = 0  # is in milliseconds for precision
 __time_converter_ms_s = 1 / 1000  # to be multiplied to time to convert milliseconds to seconds
 
 
-# --- CLASS IS DEPRECEATED - IS UNREALIABLE AT THIS TIME ---
-
 def _set_time_of_last_update(time):
     global __time_of_last_update_ms
     __time_of_last_update_ms = time
