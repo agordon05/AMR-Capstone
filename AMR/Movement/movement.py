@@ -57,7 +57,7 @@ def move():
 
     # change movement
     if is_move_change(control) is True:
-=        move_change(control)
+        move_change(control)
 
         
 # --- FOR FUTURE IMPLEMENTATION ---
