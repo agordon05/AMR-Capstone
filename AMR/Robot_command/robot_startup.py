@@ -22,5 +22,5 @@ def run():
     time.sleep(5)
     # Start the thread
     movement_thread.start()
-    # camera_thread.start()
+    camera_thread.start()
 
