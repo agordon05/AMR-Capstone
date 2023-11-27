@@ -1,7 +1,8 @@
 import requests
 import json
 import robot
-#testing
+
+#testing purposes
 #import mock_robot as robot
 
 class RobotClient:
