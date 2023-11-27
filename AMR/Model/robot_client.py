@@ -18,12 +18,6 @@ class robot_client:
 
     def update_robot_info(self):
         robot_data = robot.to_json()  # Gather data using the to_json function from robot.py
-        #image_data = robot.get_image()
-
-        #if image_data is not None:
-            #files = {'json': (None, json.dumps(robot_data), 'application/json'), 'image': ('image.jpg', image_data, 'image/jpeg')}
-            #response = requests.post(f"{self.base_url}/robot", files=files)
-        #else:
         headers = {'Content-Type': 'application/json'}
         response = requests.put(f"{self.base_url}/robot", headers=headers, data=json.dumps(robot_data))
 
@@ -31,7 +25,7 @@ class robot_client:
             raise Exception(f"Failed to update robot: {response.text}")
         # Parsing the response
         try:
-            response_data = response.json()  # Assuming the response is JSON
+            response_data = response.json()
 
             if isinstance(response_data, list) and len(response_data) in [2, 4]:
                 x_destination = response_data[0]
