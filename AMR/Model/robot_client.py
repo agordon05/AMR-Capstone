@@ -5,7 +5,7 @@ import robot
 #testing purposes
 #import mock_robot as robot
 
-class RobotClient:
+class robot_client:
     def __init__(self, base_url):
         self.base_url = base_url
 
@@ -63,7 +63,7 @@ class RobotClient:
 
 
 if __name__ == "__main__":
-    client = RobotClient("http://localhost:8080")
+    client = robot_client("http://localhost:8080")
 
     # Updating robot info using data from robot.py
     client.update_robot_info()
