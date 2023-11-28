@@ -1,3 +1,4 @@
+import base64
 
 __id: int = 1
 __message: str = "Starting up"
@@ -181,7 +182,11 @@ def add_to_log(log):
 
 
 def to_json():
-    json = {
+    #b64 image for sending
+    global __image
+    base64_image = base64.b64encode(__image).decode('utf-8') if __image is not None else None
+
+    return {
         'id': __id,
         'status': "Active",
         'message': __message,
@@ -193,7 +198,6 @@ def to_json():
         'qrScan': __qr_scan,
         'loggerList': __log,
         # 'userSignal': None,
-        'image': __image
-            }
-    return json
+        'image': base64_image
+    }
 
