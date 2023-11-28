@@ -6,6 +6,8 @@ import sys
 import cv2
 import time
 import math
+import base64
+
 # import pylibdmtx #import error
 
 directory = '~/jetbot'
@@ -30,10 +32,18 @@ def get_image():
 # converts image to byte[] and sends it to the robot object
 def send_to_robot():
     if __image:
-        image_value = __image.value
-        image_byte_array = list(image_value)
-        bot.set_image(image_byte_array)
+#        image_value = __image.value
+#        image_byte_array = list(image_value)
+#        bot.set_image(image_byte_array)
+        
+        image_value = base64.b64encode(__image.value).decode('utf-8')
+        # image_byte_array = base64.b64decode(image_value)
+        # print(str(image_byte_array))
+        print(str(image_value))
+        # bot.set_image(image_byte_array)
+        bot.set_image(image_value)
 
+        
 # should only display a live image feed
 def run():
     global __image
