@@ -55,12 +55,16 @@ def _change_direction(direction: str):
 # Define functions for each direction
 def forward():
     global __movement_speed, __movement_sleep_time, __rotation_speed
+    
+    # Move for set amount of time
     _change_direction("forward")
+    bot.add_to_log("Jetson Robot is moving forward")
+    bot.set_message("Heading to QR code")
     robot_startup.robot.forward(__movement_speed)
     time.sleep(__movement_sleep_time)
-    
     stop()
     
+    # Update
     direction = bot.get_direction()
     x_pos = bot.get_x_pos()
     y_pos = bot.get_y_pos()
@@ -73,57 +77,103 @@ def forward():
         x_pos -= 1
     if direction is 'Right':
         x_pos += 1
-    
+        
+    # Set
     bot.set_x_pos(x_pos)
     bot.set_y_pos(y_pos)
    
-    print(f'x pos: {bot.get_x_pos()} -- y pos: {bot.get_y_pos()} -- degrees: {bot.get_rotation()}')
-    print("Direction: " + bot.get_direction())
-    
+    # print(f'x pos: {bot.get_x_pos()} -- y pos: {bot.get_y_pos()} -- degrees: {bot.get_rotation()}')
+    # print("Direction: " + bot.get_direction())
 
+    
 
 def backward():
     global __movement_speed, __movement_sleep_time
+    
+    # Move for set amount of time
     _change_direction("backward")
+    bot.add_to_log("Jetson Robot is moving backward")
+    bot.set_message("Heading to QR code")
     robot_startup.robot.backward(__movement_speed)
     time.sleep(__movement_sleep_time)
     stop()
+    
+    # Update
+    direction = bot.get_direction()
+    x_pos = bot.get_x_pos()
+    y_pos = bot.get_y_pos()
+    
+    if direction is 'Up':
+        y_pos -= 1
+    if direction is 'Down':
+        y_pos += 1
+    if direction is 'Left':
+        x_pos += 1
+    if direction is 'Right':
+        x_pos -= 1
+            
+    # Set
+    bot.set_x_pos(x_pos)
+    bot.set_y_pos(y_pos)
+   
+    # print(f'x pos: {bot.get_x_pos()} -- y pos: {bot.get_y_pos()} -- degrees: {bot.get_rotation()}')
+    # print("Direction: " + bot.get_direction())
 
-
+    
+    
 def rotate_left():
     global __rotation_speed, __left_rotation_sleep_time
-    # coordinates.update()
+        
+    # Move for set amount of time
     _change_direction("rotating left")
+    bot.add_to_log("Jetson Robot is rotating left")
+    bot.set_message("Heading to QR code")
     robot_startup.robot.left(__rotation_speed)
     time.sleep(__left_rotation_sleep_time)
-    # coordinates.update()
     stop()
+    
+    # Update
     bot.turn_left()
     rotation = (bot.get_rotation() + 90) % 360
+    
+    # Set
     bot.set_rotation(rotation)
-    print(f'x pos: {bot.get_x_pos()} -- y pos: {bot.get_y_pos()} -- degrees: {bot.get_rotation()}')
-    print("Direction: " + bot.get_direction())
+    
+    # print(f'x pos: {bot.get_x_pos()} -- y pos: {bot.get_y_pos()} -- degrees: {bot.get_rotation()}')
+    # print("Direction: " + bot.get_direction())
 
 
 def rotate_right():
     global __rotation_speed, __right_rotation_sleep_time
+    
+    # Move for set amount of time
     _change_direction("rotating right")
+    bot.add_to_log("Jetson Robot is rotating right")
+    bot.set_message("Heading to QR code")
     robot_startup.robot.right(__rotation_speed)
     time.sleep(__right_rotation_sleep_time)
-    # coordinates.update()
     stop()
+    
+    # Update
     bot.turn_right()
     rotation = bot.get_rotation() - 90
     if rotation < 0:
         rotation += 360
+    
+    # Set
     bot.set_rotation(rotation)
-    print(f'x pos: {bot.get_x_pos()} -- y pos: {bot.get_y_pos()} -- degrees: {bot.get_rotation()}')
-    print("Direction: " + bot.get_direction())
+    
+    # print(f'x pos: {bot.get_x_pos()} -- y pos: {bot.get_y_pos()} -- degrees: {bot.get_rotation()}')
+    # print("Direction: " + bot.get_direction())
+
+
     
 
 def stop():
     robot_startup.robot.stop()
     _change_direction("stop")  
+    bot.add_to_log("Jetson Robot has stopped")
+
 
     
 # --- FOR FUTURE IMPLEMENTATION ---
@@ -142,21 +192,21 @@ def control_backward():
     global __movement_speed 
     coordinates.update()
     robot_startup.robot.backward(__movement_speed)
-        _change_direction("backward")
+    _change_direction("backward")
 
     
 def control_left():
     global __rotation_speed 
     coordinates.update()
     robot_startup.robot.left(__rotation_speed)
-        _change_direction("rotating left")
+    _change_direction("rotating left")
 
     
 def control_right():
     global __rotation_speed 
     coordinates.update()
     robot_startup.robot.right(__rotation_speed)
-        _change_direction("rotating right")
+    _change_direction("rotating right")
 
     
 def control_stop():

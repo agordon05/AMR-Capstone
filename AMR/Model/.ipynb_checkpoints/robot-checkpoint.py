@@ -2,24 +2,30 @@
 __id: int = 1
 __message: str = "Starting up"
 
-__x_pos: float = 0
-__y_pos: float = 0
+# Position
+__x_pos: float = 1
+__y_pos: float = 1
 __rotation: float = 0
 
-__x_destination: float = 0
+# Destination
+__x_destination: float = 1
 __y_destination: float = 1
 
+# Relevant info
 __qr_scan: str = ""
 __log = ["Jetbot is starting up"]
 __user_command: str = ""
 __robot_command: str = ""
 __image = None
+
+# Direction the robot is facing
 __direction = {
     'Up': False,
     'Down': False,
     'Left': False,
     'Right': True
 }
+# Update direction
 def turn_left():
     if __direction['Up'] is True:
         __direction['Up'] = False
@@ -37,6 +43,7 @@ def turn_left():
         __direction['Right'] = False
         __direction['Up'] = True
         
+# Update direction
 def turn_right():
     if __direction['Up'] is True:
         __direction['Up'] = False
@@ -170,7 +177,7 @@ def set_image(image):
 
 def add_to_log(log):
     global __log
-    __log = __log + log
+    __log.append(log)
 
 
 def to_json():

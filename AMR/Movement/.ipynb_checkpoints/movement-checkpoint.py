@@ -57,7 +57,7 @@ def move():
 
     # change movement
     if is_move_change(control) is True:
-=        move_change(control)
+        move_change(control)
 
         
 # --- FOR FUTURE IMPLEMENTATION ---
@@ -72,6 +72,7 @@ def get_signal():
             if __prev_control is "":
                 robot_movement.control_start()
             __prev_control = signal
+            bot.set_message("Controlled by User")
             return signal
         else:
             bot.set_user_command("")
@@ -203,6 +204,9 @@ def move_change(control: str):
     global __movement_change_time_delay
     if control != "stop" and control != "forward" and control != "backward" and control != "rotating left" and control != "rotating right":
         return
+    
+    if at_destination() is True:
+        bot.set_message("Jetbot Robot has reached destination")
 
     if control == "stop":
         robot_movement.stop()

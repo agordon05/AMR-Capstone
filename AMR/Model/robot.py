@@ -3,13 +3,13 @@ __id: int = 1
 __message: str = "Starting up"
 
 # Position
-__x_pos: float = 0
-__y_pos: float = 0
+__x_pos: float = 1
+__y_pos: float = 1
 __rotation: float = 0
 
 # Destination
-__x_destination: float = 0
-__y_destination: float = 0
+__x_destination: float = 1
+__y_destination: float = 1
 
 # Relevant info
 __qr_scan: str = ""
@@ -177,7 +177,7 @@ def set_image(image):
 
 def add_to_log(log):
     global __log
-    __log = __log + log
+    __log.append(log)
 
 
 def to_json():

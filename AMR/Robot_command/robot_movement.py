@@ -58,6 +58,8 @@ def forward():
     
     # Move for set amount of time
     _change_direction("forward")
+    bot.add_to_log("Jetson Robot is moving forward")
+    bot.set_message("Heading to QR code")
     robot_startup.robot.forward(__movement_speed)
     time.sleep(__movement_sleep_time)
     stop()
@@ -80,8 +82,9 @@ def forward():
     bot.set_x_pos(x_pos)
     bot.set_y_pos(y_pos)
    
-    print(f'x pos: {bot.get_x_pos()} -- y pos: {bot.get_y_pos()} -- degrees: {bot.get_rotation()}')
-    print("Direction: " + bot.get_direction())
+    # print(f'x pos: {bot.get_x_pos()} -- y pos: {bot.get_y_pos()} -- degrees: {bot.get_rotation()}')
+    # print("Direction: " + bot.get_direction())
+
     
 
 def backward():
@@ -89,6 +92,8 @@ def backward():
     
     # Move for set amount of time
     _change_direction("backward")
+    bot.add_to_log("Jetson Robot is moving backward")
+    bot.set_message("Heading to QR code")
     robot_startup.robot.backward(__movement_speed)
     time.sleep(__movement_sleep_time)
     stop()
@@ -111,15 +116,18 @@ def backward():
     bot.set_x_pos(x_pos)
     bot.set_y_pos(y_pos)
    
-    print(f'x pos: {bot.get_x_pos()} -- y pos: {bot.get_y_pos()} -- degrees: {bot.get_rotation()}')
-    print("Direction: " + bot.get_direction())
-    
+    # print(f'x pos: {bot.get_x_pos()} -- y pos: {bot.get_y_pos()} -- degrees: {bot.get_rotation()}')
+    # print("Direction: " + bot.get_direction())
 
+    
+    
 def rotate_left():
     global __rotation_speed, __left_rotation_sleep_time
         
     # Move for set amount of time
     _change_direction("rotating left")
+    bot.add_to_log("Jetson Robot is rotating left")
+    bot.set_message("Heading to QR code")
     robot_startup.robot.left(__rotation_speed)
     time.sleep(__left_rotation_sleep_time)
     stop()
@@ -131,8 +139,8 @@ def rotate_left():
     # Set
     bot.set_rotation(rotation)
     
-    print(f'x pos: {bot.get_x_pos()} -- y pos: {bot.get_y_pos()} -- degrees: {bot.get_rotation()}')
-    print("Direction: " + bot.get_direction())
+    # print(f'x pos: {bot.get_x_pos()} -- y pos: {bot.get_y_pos()} -- degrees: {bot.get_rotation()}')
+    # print("Direction: " + bot.get_direction())
 
 
 def rotate_right():
@@ -140,6 +148,8 @@ def rotate_right():
     
     # Move for set amount of time
     _change_direction("rotating right")
+    bot.add_to_log("Jetson Robot is rotating right")
+    bot.set_message("Heading to QR code")
     robot_startup.robot.right(__rotation_speed)
     time.sleep(__right_rotation_sleep_time)
     stop()
@@ -153,13 +163,17 @@ def rotate_right():
     # Set
     bot.set_rotation(rotation)
     
-    print(f'x pos: {bot.get_x_pos()} -- y pos: {bot.get_y_pos()} -- degrees: {bot.get_rotation()}')
-    print("Direction: " + bot.get_direction())
+    # print(f'x pos: {bot.get_x_pos()} -- y pos: {bot.get_y_pos()} -- degrees: {bot.get_rotation()}')
+    # print("Direction: " + bot.get_direction())
+
+
     
 
 def stop():
     robot_startup.robot.stop()
     _change_direction("stop")  
+    bot.add_to_log("Jetson Robot has stopped")
+
 
     
 # --- FOR FUTURE IMPLEMENTATION ---
