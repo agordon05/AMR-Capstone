@@ -24,10 +24,12 @@ from Model import robot as bot
 sleep_time = 2
 __image = None
 
+
 def get_image():
     return __image
 
 #detector = cv2.QRCodeDetector
+
 
 # converts image to byte[] and sends it to the robot object
 def send_to_robot():

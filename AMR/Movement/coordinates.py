@@ -1,5 +1,11 @@
 import numpy
 from datetime import datetime
+import sys
+import os
+# Add the parent directory (AMR) to the Python path -- ChatGPT -- used for "python Movement/test_coordinates.py >
+# coordinates-test.log" in the terminal, for some reason it wasn't using AMR as base directory
+sys.path.append(os.path.dirname(os.path.realpath(__file__)))
+
 from Robot_command import robot_movement
 from Model import robot as bot
 
@@ -12,6 +18,11 @@ __time_converter_ms_s = 1 / 1000  # to be multiplied to time to convert millisec
 
 
 # --- CLASS IS DEPRECEATED - IS UNREALIABLE AT THIS TIME ---
+# To reinstate, add coordinates.update() to the start of movement.move_change()
+# comment out portions of the methods in robot_movement.py -- marked with "--- NOTE ---" that
+# specify "switching back to coordinate functionality"
+# some will have "# --- END OF COMMENTING OUT ---" after a few lines of code to signify multiple lines to be
+# commented out
 
 def _set_time_of_last_update(time):
     global __time_of_last_update_ms

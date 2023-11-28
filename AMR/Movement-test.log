@@ -1,0 +1,19 @@
+test_move_backward (test_coordinates.Test_Coordinates) ... ok
+test_move_forward (test_coordinates.Test_Coordinates) ... ok
+test_rotate_left (test_coordinates.Test_Coordinates) ... ok
+test_rotate_right (test_coordinates.Test_Coordinates) ... ok
+test_time (test_coordinates.Test_Coordinates) ... ok
+test_at_destination (test_movement.Test_Movement) ... ok
+test_get_rotation_needed (test_movement.Test_Movement) ... ok
+test_is_move_change (test_movement.Test_Movement) ... ok
+test_is_rotation_left (test_movement.Test_Movement) ... ok
+test_is_rotation_there (test_movement.Test_Movement) ... ok
+test_move (test_movement.Test_Movement) ... ok
+test_move_change (test_movement.Test_Movement) ... ok
+test_change_direction (test_robot_movement.Test_Robot_Movement) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.646s
+
+OK
+time: 104

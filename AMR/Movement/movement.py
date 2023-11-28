@@ -31,10 +31,11 @@ def _set_rotation_error(num):
 def move():
 
     # another component is telling the robot where to go
-    # --- FOR FUTURE IMPLEMENTATION ---
     control = get_signal()
-    if control is not None:
-        control_move_change(control)
+
+    # --- FOR FUTURE IMPLEMENTATION ---
+    # if control is not None:
+    #     control_move_change(control)
 
     # if at destination, do nothing
     if control is None:
@@ -69,8 +70,9 @@ def get_signal():
     # User is telling the robot where to go -- User has first priority
     if signal is not None:
         if signal == "forward" or signal == "backward" or signal == "rotating left" or signal == "rotating right" or signal == "stop":
-            if __prev_control is "":
-                robot_movement.control_start()
+            if __prev_control == "":
+                # robot_movement.control_start()
+                pass
             __prev_control = signal
             bot.set_message("Controlled by User")
             return signal
@@ -82,8 +84,9 @@ def get_signal():
     # Another robot component is telling the robot where to go
     if signal is not None:
         if signal == "forward" or signal == "backward" or signal == "rotating left" or signal == "rotating right" or signal == "stop":
-            if __prev_control is "":
-                robot_movement.control_start()
+            if __prev_control == "":
+                # robot_movement.control_start()
+                pass
             __prev_control = signal
             return signal
         else:
@@ -219,19 +222,20 @@ def move_change(control: str):
     elif control == "backward":
         robot_movement.backward()
 
-# --- FOR FUTURE IMPLEMENTATION ---
-def control_move_change(control: str):
-    if control == "stop":
-        robot_movement.control_stop()
-    if control == "rotating left":
-        robot_movement.control_rotate_left()
-    elif control == "rotating right":
-        robot_movement.control_rotate_right()
-    elif control == "forward":
-        robot_movement.control_forward()
-    elif control == "backward":
-        robot_movement.control_backward()
-        
+# # --- FOR FUTURE IMPLEMENTATION ---
+# def control_move_change(control: str):
+#     if control == "stop":
+#         robot_movement.control_stop()
+#     if control == "rotating left":
+#         robot_movement.control_rotate_left()
+#     elif control == "rotating right":
+#         robot_movement.control_rotate_right()
+#     elif control == "forward":
+#         robot_movement.control_forward()
+#     elif control == "backward":
+#         robot_movement.control_backward()
+
+
 def run():
     while True:
         move()
