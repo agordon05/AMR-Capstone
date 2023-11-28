@@ -2,8 +2,9 @@ import numpy
 from datetime import datetime
 import sys
 import os
-# Add the parent directory (AMR) to the Python path -- ChatGPT -- used for "python Movement/test_coordinates.py >
-# coordinates-test.log" in the terminal, for some reason it wasn't using AMR as base directory
+# Add the parent directory (AMR) to the Python path -- ChatGPT used for line below-- used for " python3 -m unittest
+# discover -v Movement/ > Movement-test.log 2>&1" in the terminal, "python test_out.py > pytest.log" wasn't working and
+# doing unit tests in the terminal resulted in AMR not being the base directory
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
 from Robot_command import robot_movement

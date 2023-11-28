@@ -2,8 +2,9 @@ import unittest
 import os
 import sys
 
-# Add the parent directory (AMR) to the Python path -- ChatGPT -- used for "python Movement/test_movement.py >
-# movement-test.log" in the terminal, for some reason it wasn't using AMR as base directory
+# Add the parent directory (AMR) to the Python path -- ChatGPT used for line below-- used for " python3 -m unittest
+# discover -v Movement/ > Movement-test.log 2>&1" in the terminal, "python test_out.py > pytest.log" wasn't working and
+# doing unit tests in the terminal resulted in AMR not being the base directory
 amr_directory = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(amr_directory)
 import movement
