@@ -24,10 +24,12 @@ from Model import robot as bot
 sleep_time = 2
 __image = None
 
+
 def get_image():
     return __image
 
 #detector = cv2.QRCodeDetector
+
 
 # converts image to byte[] and sends it to the robot object
 def send_to_robot():
@@ -39,7 +41,6 @@ def send_to_robot():
         image_value = base64.b64encode(__image.value).decode('utf-8')
         # image_byte_array = base64.b64decode(image_value)
         # print(str(image_byte_array))
-        print(str(image_value))
         # bot.set_image(image_byte_array)
         bot.set_image(image_value)
 
@@ -51,7 +52,7 @@ def run():
     __image = widgets.Image(format='jpeg', width=224,
                           height=224)  # this width and height doesn't necessarily have to match the camera
     camera_link = traitlets.dlink((camera, 'value'), (__image, 'value'), transform=bgr8_to_jpeg)
-    display(__image)
+#     display(__image)
 
     # try:
     #     os.makedirs(dir)

@@ -34,7 +34,8 @@ def set_robot_info():
 def update_robot_info():
         
     url = __port + __robot_URL
-
+    if bot.get_qr_scan() is not "":
+        print("QR scan is here!!!")
     robot_data = bot.to_json()  # Gather data using the to_json function from robot.py
     #image_data = robot.get_image()
 
@@ -77,7 +78,7 @@ def update_robot_info():
                     
                 bot.set_x_pos(response_data[2])
                 bot.set_y_pos(response_data[3])
-                    
+                bot.set_qr_scan("")
                 # print(f"QR position at X: {qr_x_position}, Y: {qr_y_position}")
                 # bot.add_to_log(f"QR position at X: {qr_x_position}, Y: {qr_y_position}")
         else:

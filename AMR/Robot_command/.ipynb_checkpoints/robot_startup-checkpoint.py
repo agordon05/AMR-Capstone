@@ -10,6 +10,7 @@ from jetbot import robot
 from Movement import movement
 from Robot_command import robot_camera_vision
 from Api import RobotClient
+from QR_Scanner import qr_scan
 
 # robot object
 robot = robot.Robot()
@@ -18,7 +19,7 @@ robot = robot.Robot()
 movement_thread = threading.Thread(target=movement.run)
 camera_thread = threading.Thread(target=robot_camera_vision.run)
 api_thread = threading.Thread(target=RobotClient.run)
-
+qr_scanner_thread = threading.Thread(target=qr_scan.run)
 
 def run():
     time.sleep(5)
@@ -26,4 +27,5 @@ def run():
     api_thread.start()
     movement_thread.start()
     camera_thread.start()
+    qr_scanner_thread.start()
 
