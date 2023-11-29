@@ -1,0 +1,712 @@
+commit acfa39f02b9d071b486dfa094f579e9480ec3e31
+Author: jetbot <ag21689@georgiasouthern.edu>
+Date:   Tue Nov 28 17:51:03 2023 -0800
+
+    implemented QR Scanner
+
+commit 8d5dfb1f244370dbdebf15bdde0eef19d4973428
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Tue Nov 28 16:58:45 2023 -0500
+
+    removed server
+
+commit aa10ee2ac10d82ced7ecef84bf4ac37f203431d7
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Tue Nov 28 11:08:00 2023 -0500
+
+    updated comments
+
+commit c0d27f39b862643bd51a94d186e54d81a83a7b9e
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Tue Nov 28 10:38:35 2023 -0500
+
+    updated for test logs, added comments
+
+commit c563657faed19a2d5335fcebfcc5bf9c3803a74b
+Author: jetbot <ag21689@georgiasouthern.edu>
+Date:   Mon Nov 27 17:37:09 2023 -0800
+
+    changed byte[] to base64 version
+
+commit a1d1f05d740ccd836b3ef9876eef3b4a5dac6879
+Merge: 97a7543 d5e8106
+Author: jetbot <ag21689@georgiasouthern.edu>
+Date:   Mon Nov 27 16:29:38 2023 -0800
+
+    Merge branch 'main' of https://github.com/agordon05/AMR-Capstone into main
+
+commit 97a754368ff8fbea314e7073ae5f20f9efe53270
+Author: jetbot <ag21689@georgiasouthern.edu>
+Date:   Mon Nov 27 16:09:21 2023 -0800
+
+    integrated UI, added logger functionality
+
+commit d5e8106a5b4b2132d5fc0fa7c3bf46e818a797ae
+Author: Matthew Gordon <mg18667@georgiasouthern.edu>
+Date:   Mon Nov 27 18:40:36 2023 -0500
+
+    Cleaning
+
+commit 0854ef847cd53267c8a8cef2b710fa4fc2d184d2
+Author: Matthew Gordon <mg18667@georgiasouthern.edu>
+Date:   Mon Nov 27 18:29:14 2023 -0500
+
+    client name change
+
+commit 55367220d7ffc545f6818b22699d8f34b6012fb6
+Merge: ec6b1f3 932741a
+Author: Matthew Gordon <mg18667@georgiasouthern.edu>
+Date:   Mon Nov 27 18:11:17 2023 -0500
+
+    merge
+
+commit ec6b1f35fa27fd505282b678c162375b3d0cd226
+Author: Matthew Gordon <mg18667@georgiasouthern.edu>
+Date:   Mon Nov 27 17:57:32 2023 -0500
+
+    base64 changes for sending images
+
+commit 932741a4276c24f07b2a0ea4f61856b83fdfc1b5
+Author: Matthew Gordon <88910633+mgordon00@users.noreply.github.com>
+Date:   Mon Nov 27 15:44:45 2023 -0500
+
+    Update README.md
+
+commit a29a97c840e5556c4c3330c0da5313e39da79bf9
+Author: Matthew Gordon <mg18667@georgiasouthern.edu>
+Date:   Sun Nov 26 23:13:59 2023 -0500
+
+    RobotClient and mock robot upload
+
+commit 291a83e155ec38a6f9c6d34caff009fb98bc5179
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Thu Nov 16 09:46:01 2023 -0500
+
+    Update robot.py
+
+commit 4c8898d112935142215e556c19eaad4659308278
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Thu Nov 16 09:43:54 2023 -0500
+
+    Update robot_startup.py
+
+commit 3cd2c0ed7be0b98ec0731f7a5b128cae9886b144
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Thu Nov 16 09:40:54 2023 -0500
+
+    Update robot_movement.py
+
+commit 218a9363867256b5080fd4d5ae66735fc8d6eb4b
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Thu Nov 16 09:39:37 2023 -0500
+
+    Update movement.py
+
+commit 90e15f693ad7aa9f69cba9b5c548faf9afa024fc
+Author: jetbot <ag21689@georgiasouthern.edu>
+Date:   Thu Nov 16 06:36:19 2023 -0800
+
+    New Movement System implemented, coordinate class has depreciated
+
+commit 6377ffba67b323348959bf3ec748208542ec6a5d
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Tue Nov 14 13:52:13 2023 -0500
+
+    Update robot_camera_vision.py
+
+commit 0532c1ccfaf1b5a0a4f1de7c1717191cd19967ad
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Tue Nov 14 13:51:28 2023 -0500
+
+    Update movement.py
+
+commit 782901bcf77f965d45ce31a91a8edbf12319c8fa
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Tue Nov 14 13:49:12 2023 -0500
+
+    Update robot_movement.py
+
+commit c3713851d225cffef6c82afe65ff098f82b2c0dc
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Tue Nov 14 13:47:37 2023 -0500
+
+    Update main.py
+
+commit b4956853ca60bcbd87fe07a33dd8ec8772520d8d
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Tue Nov 14 13:46:27 2023 -0500
+
+    Update movement.py
+    
+    commented out print functions
+
+commit 324c8e6320255ddcea66f83922c15359608024e0
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Tue Nov 14 13:45:37 2023 -0500
+
+    Update coordinates.py
+    
+    commented out print function
+
+commit 98beff9fa220bca4f65d86c25758f39b6b03a6a7
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Tue Nov 14 13:44:51 2023 -0500
+
+    Update coordinates.py
+    
+    Fixed bug
+
+commit e17abc7ba4776e2a72cfd475503667927189f4ba
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Tue Nov 14 13:43:33 2023 -0500
+
+    Update robot_camera_vision.py
+
+commit 70876af53d55a7555d474187989845338d74fd82
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Tue Nov 14 12:18:34 2023 -0500
+
+    Update robot.py
+    
+    added method to get the json version of robot object
+
+commit aacb205a6ac4f5b5f66b95fe0c93cff98824d8f6
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Tue Nov 14 12:01:17 2023 -0500
+
+    Update main.py
+
+commit f7a3013b0b904ac02796acfbaec23c171f236cf5
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Tue Nov 14 12:00:55 2023 -0500
+
+    Update robot_startup.py
+
+commit 8dd5caa0267f791cc9826f1eadeac1b3e5a06a86
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Tue Nov 14 11:53:22 2023 -0500
+
+    Update robot_startup.py
+    
+    added camera thread
+
+commit a1e81131c04a35e068001cae825e307246e5b32c
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Tue Nov 14 11:51:37 2023 -0500
+
+    Update robot_camera_vision.py
+    
+    set image to robot object as byte[], removed creating jpeg file, created get method for qr scanner to grab the image as is
+
+commit 97a408bc421f4db6522ce5167864945f830dc0c2
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Nov 13 15:47:55 2023 -0500
+
+    testing git pull
+
+commit ee8dc8a1004f29797c3b4607f3dbce9e96fb7f94
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Nov 13 15:45:33 2023 -0500
+
+    testing git pull
+
+commit e9ba1107158ba92832e2ecd86de88cd6b8f5eda9
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Nov 13 15:40:31 2023 -0500
+
+    testing git pull
+
+commit 6c25c7dc47c38bbc8188603544464a4ce3f8f834
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Nov 13 15:37:07 2023 -0500
+
+    testing git pull
+
+commit aa560c4fa0016d62d73d7d470452af39f6410287
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Nov 13 15:35:40 2023 -0500
+
+    test
+
+commit fca72efa28e94a84c30aebabbaac37b291c282aa
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Sun Nov 12 14:09:32 2023 -0500
+
+    Updated movement.py
+    
+    Removed unnecessary comments
+
+commit 7a516a23e4e1cf7255ad99fdc5f694ad9cde8ce4
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Sun Nov 12 14:08:26 2023 -0500
+
+    Updated coordinates.py
+    
+    Removed unnecessary comments
+
+commit 0cb84edea7c7fa36596290f82c1d205422443669
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Sun Nov 12 14:07:20 2023 -0500
+
+    Updated robot.py
+
+commit cbd2744b5286cca4939b6dff5484d0a308754058
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Sun Nov 12 14:05:00 2023 -0500
+
+    Updated robot_startup.py
+    
+    removed () from movement.run() when initializing the thread to not start it right away
+
+commit 2c1daf49be1a6de06568653af2d23f85adfa8e8b
+Merge: 2eb42b2 c90edbe
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Thu Nov 9 18:52:15 2023 -0500
+
+    Merge branch 'main' of https://github.com/agordon05/AMR-Capstone
+
+commit 2eb42b294b822e4d3acb38e9133ee36f90880e7b
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Thu Nov 9 18:52:12 2023 -0500
+
+    Moved Server side to another Repository
+
+commit c90edbeb39da60455d2d7eaedb34d564d5bd5e2a
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Thu Nov 9 18:19:32 2023 -0500
+
+    readding imports, ensuring it doesn't break anything
+
+commit 2bc36712b94a256db008a0da52c7af41c5f4d85f
+Merge: 89605aa 30780a2
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Thu Nov 9 18:13:31 2023 -0500
+
+    Merge branch 'main' of https://github.com/agordon05/AMR-Capstone
+
+commit 89605aa284c921950e41c144d294582e2775753e
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Thu Nov 9 18:11:02 2023 -0500
+
+    readding imports, ensuring it doesn't break anything
+
+commit 30780a239fa9a76bce06a1e922c5634b4a6fd63f
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Wed Nov 8 16:30:33 2023 -0500
+
+    Updated Server
+    
+    Added QR pictures. Added loading and saving for QR codes, Added note for test cases
+
+commit b3fa3cb459efa646f953c6130f56b35d56442168
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Fri Nov 3 13:21:58 2023 -0400
+
+    update
+
+commit d24ff29d4175c5598facda03f99ecb18a5aade39
+Merge: 9a0fcbb 5593182
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Fri Nov 3 13:20:31 2023 -0400
+
+    Merge branch 'main' of https://github.com/agordon05/AMR-Capstone
+
+commit 9a0fcbbfc78ea6cd12273027658b702c9455c0c7
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Fri Nov 3 13:12:03 2023 -0400
+
+    implementation of Camera object [WORKING]
+
+commit 559318250c129404590281d74962c381f78f6f23
+Author: jetbot <jetbot@nano-4gb-jp45.localdomain>
+Date:   Fri Nov 3 09:45:00 2023 -0700
+
+    updated camera object
+
+commit 56fa4468d335ade783f557180e39247588a7b50f
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Mon Oct 30 20:59:06 2023 -0400
+
+    Live image feed test
+    
+    first bit of code in one of the jupyter notebooks
+
+commit e288893c3d612dee6376bc49875f3758e181fc1a
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 20:20:43 2023 -0400
+
+    testing project
+
+commit f6418c70d4cce927ccaacc649068039139d424af
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 20:18:14 2023 -0400
+
+    testing project
+
+commit 67691cd4f49f1a75bc60afc4ea122af3684a4b88
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 19:46:24 2023 -0400
+
+    testing camera configuration with default cv2 functions
+
+commit 4ba45f2b79361b7dbe14294ba1e7e2a20b63ea82
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 19:45:49 2023 -0400
+
+    testing camera configuration with default cv2 functions
+
+commit dd4a902c1dfcd68f8153ce7caab9fae84c2b91d1
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 19:44:29 2023 -0400
+
+    testing camera configuration with default cv2 functions
+
+commit 4da722540a110e6e2ca2a0b79403b2a061f65c52
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 19:28:32 2023 -0400
+
+    testing unknown error with numpy
+
+commit 2caa8298ae0631aabd6f828c7f1a814c949126f9
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 19:22:14 2023 -0400
+
+    testing unknown error with numpy
+
+commit 00be492129b9ab21c5547e23a9c5f6a32fe83e22
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 19:19:04 2023 -0400
+
+    testing unknown error with numpy
+
+commit ba511a6a9255256edf0405c09a50c3ce78418378
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 19:15:40 2023 -0400
+
+    testing unknown error with numpy
+
+commit d90423d28e4f9966155e0db0c54b66fc0ca448f7
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 19:14:43 2023 -0400
+
+    testing unknown error with numpy
+
+commit a77ac659e1db4d18ee3958a867c223aecaebfe39
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 19:13:29 2023 -0400
+
+    testing unknown error with numpy
+
+commit 33dbeb683fe92c094abbb1939ecb752fe78632fd
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 19:06:39 2023 -0400
+
+    current error with nump, temp removing import
+
+commit 37d04296a099f9b6516b59a4ebd732e3618e1e9d
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 18:53:31 2023 -0400
+
+    jetbot module added?
+
+commit 0fd280380e1132868fa7980087d8dfa861d59fe4
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 18:52:16 2023 -0400
+
+    jetbot module added?
+
+commit 3e9b07396a626c5d8c3fae1006a3f83c6a253d71
+Merge: 57d36d0 777103f
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 18:45:16 2023 -0400
+
+    Merge remote-tracking branch 'origin/main'
+    
+    # Conflicts:
+    #       AMR/Robot_command/robot_camera_vision.py
+
+commit 57d36d000b1be23d52107f937da385682833844d
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 18:44:45 2023 -0400
+
+    hopeful robot module implementation
+
+commit 2bd84daf5b0c9e36ad6721a1c2a1ca4f9e8f5d8a
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 18:37:58 2023 -0400
+
+    trying cv2 to commit
+
+commit 5cbcde4eca6c47dc2d11b9ca8c58c68761b02493
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 18:35:36 2023 -0400
+
+    filler
+
+commit 520f9df609a1f161d9a9c2b8e7067b26bf9a3248
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 18:34:34 2023 -0400
+
+    filler
+
+commit 777103f6f28fb7469de346c1d05f81a7f893407b
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Mon Oct 30 18:29:50 2023 -0400
+
+    Update robot_camera_vision.py
+
+commit 5497c1fef8d9106590793afcd291d83ff27842f6
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Mon Oct 30 18:27:58 2023 -0400
+
+    Update robot_camera_vision.py
+
+commit 72192b7f5952f1bb529655c66ad49fe1d667588a
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Mon Oct 30 18:19:06 2023 -0400
+
+    robot startup update
+
+commit 7a8df594c6b61a8beca495977626ccdcbabd2de0
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 18:14:24 2023 -0400
+
+    filler
+
+commit 083f80e9408f0b5bb50eb0723233490dbd5aa921
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 18:11:29 2023 -0400
+
+    directory for importing jetbot module implemented
+
+commit 93c88e776f686f46f239966271460b717e8d6b26
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 18:07:38 2023 -0400
+
+    directory for importing jetbot module implemented
+
+commit 31f6754273404541176e82b21ed1897373c4a82c
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 18:04:00 2023 -0400
+
+    directory for importing jetbot module implemented
+
+commit 2b0a49fa54203dbeab75101a33354543107c9669
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 18:01:18 2023 -0400
+
+    directory for importing jetbot module implemented
+
+commit 9409b58b7f945c0819b2d82eb51424ac36ef3216
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Mon Oct 30 17:58:30 2023 -0400
+
+    directory for importing jetbot module implemented
+
+commit c0f2cb9f7935d812c18ffcd2761764b94ec6ba2c
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Fri Oct 27 17:38:55 2023 -0400
+
+    camera instantiated
+
+commit 70534faf7cabe51403db11e2ff771f4d1a32a8c2
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Thu Oct 26 19:22:30 2023 -0400
+
+    testing jetbot import
+
+commit 5e86691524901df0e63ef4b57781661514998e93
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Thu Oct 26 19:07:54 2023 -0400
+
+    implemented jupyterlab camera instance creation
+
+commit ca36a804b2eae6a67ee2641114a87bb539b8f213
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Thu Oct 26 19:01:21 2023 -0400
+
+    implemented jupyterlab camera instance creation
+
+commit 078c51f020b7ac1184711b8490f914b37f0e4564
+Merge: fd1d22a dc0e2c2
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Thu Oct 26 18:54:48 2023 -0400
+
+    Merge remote-tracking branch 'origin/main'
+
+commit fd1d22aa13a799b1be56e0d0879c59334595695e
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Thu Oct 26 18:53:43 2023 -0400
+
+    implemented jupyterlab camera instance creation
+
+commit dc0e2c253c334b9bd8bf9bc63994d02a3b813595
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Tue Oct 24 18:35:40 2023 -0400
+
+    Reorganized RobotService class
+
+commit 4df3a2e63c5268768fe44aaa4238c502022e450b
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Mon Oct 23 20:06:30 2023 -0400
+
+    Implemented robot class for robot
+
+commit e7914995b3adc22edad8ad75cf4e57757f80f0f8
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Sun Oct 22 18:44:34 2023 -0400
+
+    Finished testing server
+
+commit c6b7569dcc558095d6ba106cc735d2e9b4801570
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Sat Oct 21 19:00:04 2023 -0400
+
+    n/a
+
+commit 842618adf8b0d9e95bf6139a039473d0106cbaf5
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Sat Oct 21 18:24:55 2023 -0400
+
+    new code, changed for testing environment scope
+
+commit 22dfdc5a86d87b5109d745a81869de7337d0b581
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Sat Oct 21 17:18:21 2023 -0400
+
+    removed pylibdmtx imports; caused error for some reason
+
+commit bc409b38337bf4ab716cd96ddbe0ca7ea4691820
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Sat Oct 21 16:44:21 2023 -0400
+
+    verifying updates
+
+commit a92d1f65201ce773bbf5956b68ebf51f45953492
+Merge: 25d926c 86cdc82
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Sat Oct 21 16:36:48 2023 -0400
+
+    Merge remote-tracking branch 'origin/main'
+
+commit 86cdc8265a9290fe424de1ba63a364854e29d242
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Fri Oct 20 15:36:16 2023 -0400
+
+    Tasks #23 - #30
+    
+    Completed but not yet tested. Moved QR Queue to this project
+
+commit 25d926cb4e121a2ae6eceb64a928a701b5da27b7
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Sun Oct 15 19:22:46 2023 -0400
+
+    Made basic program for assigning and visualizing camera vision.
+
+commit 839b04eb89f5216c149ef26c51120b8b1f354100
+Author: James Perry <jp28543@georgiasouthern.edu>
+Date:   Sun Oct 15 18:15:34 2023 -0400
+
+    Create robot_camera_vision.py
+    
+    Created first instance of robot_camera_vision.py, added to version history
+
+commit ca5afb05794cf32ed74c4709aa339198fc3daa01
+Author: jetbot <jetbot@nano-4gb-jp45.localdomain>
+Date:   Sun Oct 8 13:28:22 2023 -0700
+
+    Completed tasks #1 and #2, Attempted Scaling for #5 and #6
+
+commit fcbb9b5f80da419182f6283753b83e5f74c47d4f
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Thu Oct 5 01:15:09 2023 -0400
+
+    requirements update
+
+commit 659c2d987fc2cdbafe93ad6f276eba45464990da
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Thu Oct 5 01:02:46 2023 -0400
+
+    jetbot package installed, uncommented jetbot object and functions
+
+commit 88eb0c060d5dea86b7efb22d081dd10379da41db
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Wed Oct 4 23:57:28 2023 -0400
+
+    commented out jetbot imports
+    
+    commented out jetbot imports until testing
+
+commit 9ba68b7906f0050fa118e5a1020d312a4a80ced9
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Wed Oct 4 23:46:01 2023 -0400
+
+    added robot movement
+    
+    added robot movement and created a robot startup function
+
+commit 31616272443be4e8efc6f37590a9f97f7fbf0b3f
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Wed Oct 4 12:08:34 2023 -0400
+
+    Completed task #34
+    
+    Added QR file and a way to load them into QR Access
+
+commit db6e7be036b1b54b089bb68de8bcde39320e1a75
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Wed Sep 27 12:31:34 2023 -0400
+
+    Tested QR Object, Access and Queue
+
+commit 583d9082795c0516d41cb21ae85d060bca85fa22
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Tue Sep 26 20:55:04 2023 -0400
+
+    Implemented QR Code and Queue
+    
+    Completed tasks #30 - #33 and #35 - #42. These tasks have yet to be tested
+
+commit cd1da7453ec65833a58a84b31599d700c51691fe
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Tue Sep 26 17:55:15 2023 -0400
+
+    Created Java Project
+    
+    Created Java project for UI and server
+
+commit 47b108839f6b97cc379ba02b9e9c2b76f6b738d7
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Sat Sep 23 15:59:17 2023 -0400
+
+    Reorganized
+    
+    Moved the robot_movement file to the Robot directory
+
+commit dbbfb88d20b1e3a4f6a4760b818072d242168de1
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Sat Sep 23 15:51:24 2023 -0400
+
+    Completed Priority Movement
+    
+    Added a priority movement for robot and user controls and changed sensitive variables to private instead of public
+
+commit 31d7a8c8df8838f3505a0ab3273701aa14e6bb96
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Fri Sep 22 15:04:59 2023 -0400
+
+    Movement Story 3 and 4
+    
+    added and tested movement control, telling the robot where to go, either by a signal or through its coordinates and destination. added and tested a coordinate system, letting the robot know where it is on a grid. scaling will need to be improved upon
+
+commit b0e9b3026570362257756d4f2434e4ead0d99555
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Tue Sep 12 15:57:51 2023 -0400
+
+    Initial commit
+
+commit 6f385a6c7833dfd77b89b23714945b186806b753
+Author: agordon05 <100168379+agordon05@users.noreply.github.com>
+Date:   Fri Sep 8 20:56:24 2023 -0400
+
+    Initial commit
